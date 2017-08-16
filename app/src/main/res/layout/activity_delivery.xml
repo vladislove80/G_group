@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayoutDelivery"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.oleynikov.hp.g_group.activity.DeliveryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/LinearLayoutTest"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:padding="10dp"
+                android:id="@+id/imageButtonX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                app:srcCompat="@drawable/x_image" />
+
+            <ImageButton
+                android:id="@+id/imageButtonMoto"
+                android:layout_width="27dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/basket_car_bitton_white" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonViewRestName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:background="@android:color/transparent"
+                android:text="ELEVEN DOGS"
+                android:textColor="#ffffff"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize"
+                app:textAllCaps="false"
+                app:tabIndicatorColor="#8cc43f"
+                app:tabIndicatorHeight="3dp"
+                app:tabSelectedTextColor="#ffffff"
+                app:tabTextAppearance="@style/MyCustomTextAppearance"
+
+
+                />
+            <android.support.v7.widget.RecyclerView
+                android:layout_below="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rv_recycler_view"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view_delivery"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="#ffd831"
+        app:itemIconTint="@android:color/black"
+        app:itemTextColor="@android:color/background_dark">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linearDeliveryAlmezze"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="132dp"
+                        android:layout_height="82dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="24dp"
+                        android:layout_marginTop="24dp"
+                        app:srcCompat="@drawable/al_mezze_logo" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/recyclerAlMezzeND"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="60dp"
+                            android:gravity="center_horizontal"
+                            android:text="25"
+                            android:textColor="#434a53"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/imageViewMotoX1"
+                            android:gravity="center_horizontal"
+                            android:text="Сервис"
+                            android:textColor="#545d66"
+                            android:textSize="16sp" />
+
+
+                        <ImageView
+                            android:id="@+id/imageViewMotoX1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="31dp"
+                            app:srcCompat="@drawable/ic_basket_car_bitton" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearDeliveryElevenDogs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageViewElevenDogs"
+                        android:layout_width="132dp"
+                        android:layout_height="82dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="24dp"
+                        android:layout_marginTop="24dp"
+                        app:srcCompat="@drawable/eleven_dogs_logo" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/recyclerElevenDogsND"/>
+
+                    <RelativeLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="60dp"
+                            android:gravity="center_horizontal"
+                            android:text="25"
+                            android:textColor="#434a53"
+                            android:textSize="16sp" />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/imageViewMotoX2"
+                            android:gravity="center_horizontal"
+                            android:text="Сервис"
+                            android:textColor="#545d66"
+                            android:textSize="16sp" />
+
+
+                        <ImageView
+                            android:id="@+id/imageViewMotoX2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="31dp"
+                            app:srcCompat="@drawable/ic_basket_car_bitton" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearDeliveryKinza"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageViewKinza"
+                        android:layout_width="132dp"
+                        android:layout_height="82dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="24dp"
+                        android:layout_marginTop="24dp"
+                        app:srcCompat="@drawable/kinza_logo" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/recyclerKinzaND"/>
+
+                    <RelativeLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="60dp"
+                            android:gravity="center_horizontal"
+                            android:text="25"
+                            android:textColor="#434a53"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/imageViewMotoX4"
+                            android:gravity="center_horizontal"
+                            android:text="Сервис"
+                            android:textColor="#545d66"
+                            android:textSize="16sp" />
+
+
+                        <ImageView
+                            android:id="@+id/imageViewMotoX4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="31dp"
+                            app:srcCompat="@drawable/ic_basket_car_bitton" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+
+                <Button
+                    android:id="@+id/imageButtonOrder"
+                    android:layout_width="168dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/Order"
+                    android:textAllCaps="false"
+                    android:textColor="#ffd831"
+                    android:textSize="16sp"
+                    android:textStyle="normal"
+                    app:srcCompat="@drawable/rectangle" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </android.support.design.widget.NavigationView>
+</android.support.v4.widget.DrawerLayout>

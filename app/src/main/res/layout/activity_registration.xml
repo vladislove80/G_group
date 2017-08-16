@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.oleynikov.hp.g_group.activity.RegistrationActivity">
+
+    <ImageButton
+
+        android:id="@+id/imageButtonBackInLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/back" />
+
+    <ImageButton
+        android:layout_marginTop="36dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageButtonPhotoPicker"
+        android:layout_width="165dp"
+        android:layout_height="192dp"
+        android:layout_gravity="center"
+        android:background="#d8d8d8"
+        android:paddingBottom="60dp"
+        android:paddingTop="60dp"
+        app:srcCompat="@drawable/ic_photo_camera_black_24px" />
+    <ScrollView
+        android:id="@+id/scrollViewRegistr"
+        android:layout_below="@+id/imageButtonPhotoPicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
+
+        >
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/editTextPhoneNumber"
+                style="@style/EditTextRegist"
+                android:ems="10"
+                android:hint="@string/MobileNumber"
+                android:inputType="textPersonName"
+                android:textColorHint="@color/cardview_light_background" />
+            <EditText
+                android:id="@+id/editTextFullName"
+                style="@style/EditTextRegist"
+                android:ems="10"
+                android:hint="@string/FIO"
+                android:inputType="textPersonName"
+                android:textColorHint="@color/cardview_light_background" />
+
+
+
+            <EditText
+                android:id="@+id/editTextGetCard"
+                style="@style/EditTextRegist"
+                android:ems="10"
+                android:hint="@string/GetCard"
+                android:inputType="textPersonName"
+                android:textColorHint="@color/cardview_light_background" />
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                style="@style/EditTextRegist"
+                android:ems="10"
+                android:hint="EMAIL "
+                android:inputType="textPersonName"
+                android:textColorHint="@color/cardview_light_background" />
+
+            <EditText
+                android:id="@+id/editTextBirthDay"
+                style="@style/EditTextRegist"
+                android:ems="10"
+                android:hint="@string/BirthDay"
+                android:inputType="textPersonName"
+                android:textColorHint="@color/cardview_light_background" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/textViewGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="68dp"
+                android:textSize="10sp"
+                android:text="@string/Gender"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonMale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="48dp"
+                    android:layout_weight="1"
+                    android:textSize="10sp"
+                    android:text="@string/Male" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonFemale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="10sp"
+                    android:text="@string/Female" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#9e9e9f"
+                android:layout_marginLeft="48dp"
+                android:layout_marginRight="48dp"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <RadioButton
+                android:id="@+id/radioButtonAgree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="48dp"
+                android:layout_marginRight="48dp"
+                android:layout_marginTop="10dp"
+                android:textSize="10sp"
+                android:text="@string/Agree" />
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+        <Button
+
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:textSize="14sp"
+            android:background="@drawable/rectangle_3"
+            android:text="@string/RegistProfile" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

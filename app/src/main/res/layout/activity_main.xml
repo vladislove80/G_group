@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
+    tools:context="com.oleynikov.hp.g_group.activity.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:orientation="vertical"
+            android:weightSum="1"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="26dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/imageButtonNavigationPanel"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/ic_menu_black_24_px"
+                   />
+
+
+                <ImageView
+                    android:id="@+id/imageViewMainLogo"
+                    android:layout_width="156dp"
+                    android:layout_height="36dp"
+
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/logo_mini_green_white" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rcyList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:focusable="true"
+
+
+
+
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_weight="0.69"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewShares"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/Shares"
+                    android:textColor="#f1f1f1"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/textViewSharesTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="@string/SharesTheme"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.29"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/buttonFavoriteClient"
+                        style="@style/buttonBlack"
+
+                        android:drawableLeft="@drawable/acount_icon_white"
+                        android:focusableInTouchMode="false"
+                        android:text="@string/FavoriteClient" />
+
+                    <Button
+                        android:id="@+id/buttonDelivery"
+                        style="@style/buttonBlack"
+
+                        android:drawableLeft="@drawable/menu_icon_white"
+                        android:text="@string/Delivery" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <ScrollView
+            android:layout_marginTop="10dp"
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="8dp">
+
+                    <ImageButton
+                        android:id="@+id/imageButtonHotChernomors"
+                        style="@style/ImageButtonRest"
+                        app:srcCompat="@drawable/prci_chernomorsk" />
+
+                    <ImageButton
+                        android:id="@+id/imageButtonGovorova"
+                        style="@style/ImageButtonRest"
+                        app:srcCompat="@drawable/perci_govorova" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="8dp">
+
+                    <ImageButton
+                        android:id="@+id/imageButtonKinza"
+                        style="@style/ImageButtonRest"
+                        app:srcCompat="@drawable/kindza" />
+
+                    <ImageButton
+                        android:id="@+id/imageButtonCoroleva"
+                        style="@style/ImageButtonRest"
+                        app:srcCompat="@drawable/perci_coroleva" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/imageButtonAlMezze"
+                        style="@style/ImageButtonRest"
+                        app:srcCompat="@drawable/al_mezze" />
+
+                    <ImageButton
+                        android:id="@+id/imageButtonEleven"
+                        style="@style/ImageButtonRest"
+                        app:srcCompat="@drawable/eleven_dogs" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/background_light"
+        app:headerLayout="@layout/nav_header"
+        app:itemIconTint="@android:color/black"
+        app:itemTextColor="@android:color/background_dark"
+        app:menu="@menu/menu_navigation" />
+
+
+</android.support.v4.widget.DrawerLayout>

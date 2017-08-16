@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+
+    >
+
+
+    <TextView
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/textViewX"
+        android:id="@+id/textViewNameFoodDelivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="31dp"
+        android:text="Hot-dog"
+        android:textColor="#545d66"
+        android:textSize="16sp" />
+
+    <ImageButton
+        android:id="@+id/imageButtonPlus"
+        android:layout_width="24dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="24dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/plus_btn" />
+
+    <ImageButton
+        android:id="@+id/imageButtonRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/imageButtonPlus"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/minus_btn" />
+
+    <TextView
+        android:layout_marginRight="5dp"
+        android:id="@+id/textViewX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/textViewCountFood"
+        android:text="x"
+        android:textColor="#545d66"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textViewCountFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/textViewCostFood"
+        android:text="1"
+        android:textColor="#545d66"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textViewCostFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/imageButtonPlus"
+        android:text="100 UAH"
+        android:textColor="#434a53"
+
+        android:textSize="16sp" />
+
+
+</RelativeLayout>

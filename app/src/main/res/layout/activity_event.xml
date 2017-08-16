@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentRight="true"
+    android:background="@android:color/black"
+    android:orientation="vertical"
+    tools:context="com.oleynikov.hp.g_group.activity.EventActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/black">
+
+        <TextView
+            android:id="@+id/textViewNameRestInGalerry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/AlMezze"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="normal"
+
+            />
+
+        <ImageButton
+            android:padding="20dp"
+            android:id="@+id/imageButtonBackRest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@android:color/transparent"
+            android:rotation="270"
+            app:srcCompat="@drawable/ic_keyboard_arrow_down_white_24_px" />
+
+        <ImageButton
+            android:id="@+id/imageButtonNextRest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:padding="20dp"
+            android:background="@android:color/transparent"
+            android:rotation="90"
+            app:srcCompat="@drawable/ic_keyboard_arrow_down_white_24_px" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerEvent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp" />
+</android.widget.LinearLayout>

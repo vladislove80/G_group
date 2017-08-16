@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_5882_1024_x_680"
+    tools:context="com.oleynikov.hp.g_group.activity.AboutUsActivity">
+
+
+    <ImageView
+
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageViewBigLogoAU"
+        android:layout_width="170dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        app:srcCompat="@drawable/g_group_logo_2" />
+
+    <TextView
+        android:layout_below="@+id/imageViewBigLogoAU"
+        android:id="@+id/textViewAboutPartOne"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/about_us_part1"
+        android:textAlignment="center"
+        style="@style/textAboutUs" />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewAboutPartOne"
+        android:layout_above="@+id/textViewEmail"
+        >
+        <TextView
+            android:id="@+id/textViewAboutPartTwo"
+            android:text="@string/about_us_part2"
+            android:textAlignment="center"
+            style="@style/textAboutUs" />
+
+
+    </ScrollView>
+
+    <TextView
+        android:layout_above="@+id/linearAboutURL"
+        android:id="@+id/textViewEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/e_mail"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/linearAboutURL"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageButtonFacebookURL"
+            style="@style/imageButtonURL"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/capa_1" />
+
+        <ImageButton
+            android:id="@+id/imageButtonInstaURL"
+            style="@style/imageButtonURL"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/instagram_social_network_logo_of_photo_camera_2" />
+
+    </LinearLayout>
+
+</RelativeLayout>

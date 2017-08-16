@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/favoriteClient"
+            android:icon="@drawable/acount_icon_black"
+            android:title="@string/FavoriteClient"
+            android:visible="true" />
+        <item
+            android:id="@+id/delivery"
+            android:icon="@drawable/menu_icon_black"
+            android:title="Доставка" />
+        <item
+            android:id="@+id/event"
+            android:title="@string/event"
+            android:icon="@drawable/event_icon_black"/>
+        <item
+            android:id="@+id/about_us"
+            android:title="@string/About_us"
+            android:icon="@drawable/menu_icon_white_copy_5"/>
+    </group>
+
+</menu>
