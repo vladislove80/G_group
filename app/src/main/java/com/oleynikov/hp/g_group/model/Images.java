@@ -4,7 +4,9 @@ package com.oleynikov.hp.g_group.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Images {
+import java.io.Serializable;
+
+public class Images implements Serializable {
 
     @SerializedName("mobileList")
     @Expose

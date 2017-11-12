@@ -35,10 +35,10 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.github.bumptech.glide:glide:4.0.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
     compile 'com.azoft.carousellayoutmanager:carousel:1.2.1'
     compile 'me.iwf.photopicker:PhotoPicker:0.9.5@aar'
-    testCompile 'junit:junit:4.12'
     compile 'com.shamanland:facebook-like-button:0.1.8'
     compile 'com.mikhaellopez:circularimageview:3.0.2'
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
 }

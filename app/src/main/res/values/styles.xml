@@ -99,5 +99,13 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
+    <style name="MyRadioButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@android:color/background_dark</item>
+        <item name="colorControlActivated">#ffd831</item>
+    </style>
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">#ffd831</item>
+    </style>
+
 
 </resources>

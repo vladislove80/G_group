@@ -93,4 +93,12 @@
     <string name="CorolevaFB">https://www.facebook.com/hotpeppersod/?fref=ts</string>
     <string name="AlMezzeFB">https://www.facebook.com/ALMEZZE/?fref=ts</string>
     <string name="All">Все</string>
+    <string name="your_order">Ваш заказ:</string>
+    <string name="name">Имя</string>
+    <string name="phone">Телефон</string>
+    <string name="recall">Перезванивать для подтверждения</string>
+    <string name="SendSms">Отправлять смс со статусами</string>
+    <string name="address">Адрес доставки</string>
+    <string name="OnTime">На время</string>
+    <string name="RightNow">На сейчас</string>
 </resources>

@@ -1,11 +1,12 @@
 
 package com.oleynikov.hp.g_group.model;
 
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Item {
+public class Item implements Serializable {
 
     @SerializedName("id")
     @Expose
@@ -40,6 +41,8 @@ public class Item {
     @SerializedName("editLink")
     @Expose
     private Object editLink;
+
+
 
     public int getCount() {
         return count;

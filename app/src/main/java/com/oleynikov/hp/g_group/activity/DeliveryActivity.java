@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
@@ -29,8 +28,9 @@ import com.oleynikov.hp.g_group.model.FoodCategory;
 import com.oleynikov.hp.g_group.model.FoodItem;
 
 import com.oleynikov.hp.g_group.model.Item;
-import com.oleynikov.hp.g_group.other.FoodList;
+import com.oleynikov.hp.g_group.model.LoginGorilla;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,8 +49,8 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
 
     private Gson gson;
     private Retrofit retrofit;
-    private List<FoodCategory> infoRest = new ArrayList<>();
-    private List<Item> infoRestItem = new ArrayList<>();
+    private List<FoodCategory> mFoodCategory = new ArrayList<>();
+    private List<Item> mListAllFood = new ArrayList<>();
     private Button mButtonChoiceRestoran;
     private ImageButton mImageButtonBackX;
     private ImageButton mImageButtonOpenPanel;
@@ -64,6 +64,7 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
     private List<Item> mFoodListKinza = new ArrayList<>();
     private List<Item> mFoodListAlMezze = new ArrayList<>();
     private List<Item> mListChoiceRest = new ArrayList<>();
+    private List<Item> mFoodChoiceUser = new ArrayList<>();
     private RecyclerView mMainRecycler;
     private RecyclerDeliveryAdapter mDeliveryAdapter;
     private LinearLayout mLinearAlMezzeND;
@@ -72,6 +73,11 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
     private BroadcastReceiver broadcastReceiverResrName;
     private TabLayout tabLayout;
     private RecyclerNavDrawerDelivery myRecyclerAdapter;
+    private   GorillaApi gorillaApi;
+    public static final String food = "food";
+
+    private Button mButtonCreateOdrer;
+
 
     private int idRestCategory = 121;
 
@@ -81,13 +87,17 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_delivery);
         initializationGson();
         initializationRetrofit();
+        gorillaApi = retrofit.create(GorillaApi.class);
         addFoodList();
 
 
+
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+
         mListChoiceRest = mFoodListEleveneDogs;
-
-
+        mNavigationViewDelivery = (NavigationView) findViewById(R.id.navigation_view_delivery);
+        mButtonCreateOdrer = (Button) findViewById(R.id.buttonCreateOrder1);
+        mButtonCreateOdrer.setOnClickListener(this);
         myRecyclerAdapter = new RecyclerNavDrawerDelivery(this, mFoodListAlMezze);
         mButtonChoiceRestoran = (Button) findViewById(R.id.buttonViewRestName);
         mButtonChoiceRestoran.setOnClickListener(this);
@@ -95,7 +105,7 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
         mImageButtonBackX.setOnClickListener(this);
         mImageButtonOpenPanel = (ImageButton) findViewById(R.id.imageButtonMoto);
         mImageButtonOpenPanel.setOnClickListener(this);
-        mNavigationViewDelivery = (NavigationView) findViewById(R.id.navigation_view_delivery);
+
         mDrawerLayoutDelivery = (DrawerLayout) findViewById(R.id.drawerLayoutDelivery);
         mRecyclerAlMezzeND = (RecyclerView) findViewById(R.id.recyclerAlMezzeND);
         mRecyclerAlMezzeND.setLayoutManager(new LinearLayoutManager(this));
@@ -134,18 +144,16 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
                     case R.id.buttonAddInND:
 
 
-                        if (!mListChoiceRest.contains(infoRestItem.get(position))) {
-                            mListChoiceRest.add(infoRestItem.get(position));
-                            Log.d("Add","First");
+                        if (!mListChoiceRest.contains(mListAllFood.get(position))) {
+                            mListChoiceRest.add(mListAllFood.get(position));
+                            Log.d("Add", "First");
                             updateAdapters();
-                        }
-                        else
-                            {
-                                Log.d("Add","Second");
-
-                                mListChoiceRest.get(position).setCount(  mListChoiceRest.get(position).getCount() + 1);
-                                Log.d("Add", String.valueOf(mListChoiceRest.get(position).getCount()));
-                             updateAdapters();
+                        } else {
+//                            Log.d("Add", "Second");
+//
+//                            mListChoiceRest.get(0).setCount(infoRestItem.get(position).getCount() + 1);
+//                            Log.d("Add", String.valueOf(mListChoiceRest.get(position).getCount()));
+//                            updateAdapters();
                         }
 
 
@@ -166,8 +174,8 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
 
         tabLayout.setTabMode(0);
 
-        for (int i = 0; i < infoRest.size(); i++) {
-            tabLayout.addTab(tabLayout.newTab().setText(infoRest.get(i).getTitle()));
+        for (int i = 0; i < mFoodCategory.size(); i++) {
+            tabLayout.addTab(tabLayout.newTab().setText(mFoodCategory.get(i).getTitle()));
         }
 
 
@@ -177,9 +185,9 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
                 int position = tab.getPosition();
                 if (tabLayout.getSelectedTabPosition() == position) {
                     test.clear();
-                    for (int i = 0; i < infoRestItem.size(); i++) {
-                        if (infoRest.get(position).getId().equals(infoRestItem.get(i).getCategoryId())) {
-                            test.add(infoRestItem.get(i));
+                    for (int i = 0; i < mListAllFood.size(); i++) {
+                        if (mFoodCategory.get(position).getId().equals(mListAllFood.get(i).getCategoryId())) {
+                            test.add(mListAllFood.get(i));
 
                         }
                     }
@@ -238,6 +246,24 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
                 mDrawerLayoutDelivery.openDrawer(mNavigationViewDelivery);
 
                 break;
+            case R.id.buttonCreateOrder1:
+
+                if(!mFoodChoiceUser.isEmpty())
+                {
+                    mFoodChoiceUser.clear();
+                }
+                mFoodChoiceUser.addAll(mFoodListAlMezze);
+                mFoodChoiceUser.addAll(mFoodListEleveneDogs);
+                mFoodChoiceUser.addAll(mFoodListKinza);
+                Intent intent = new Intent(DeliveryActivity.this, CreateOrderActivity.class);
+                intent.putExtra(food, (Serializable) mFoodChoiceUser);
+                startActivity(intent);
+
+                Log.d("ChoiceListSize", String.valueOf(mFoodChoiceUser.size()));
+//                startActivity(new Intent(this, CreateOrderActivity.class));
+
+                break;
+
         }
 
     }
@@ -265,8 +291,8 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
                     mListChoiceRest = mFoodListKinza;
                     idRestCategory = 119;
                 }
-                infoRestItem.clear();
-                infoRest.clear();
+                mListAllFood.clear();
+                mFoodCategory.clear();
                 tabLayout.removeAllTabs();
 
 
@@ -293,14 +319,14 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void addFoodList() {
-        GorillaApi gorillaApi = retrofit.create(GorillaApi.class);
+
         Call<List<FoodCategory>> call = gorillaApi.getCategory(idRestCategory);
 
         call.enqueue(new Callback<List<FoodCategory>>() {
             @Override
             public void onResponse(Call<List<FoodCategory>> call, Response<List<FoodCategory>> response) {
                 for (int i = 0; i < response.body().size(); i++) {
-                    infoRest.add(response.body().get(i));
+                    mFoodCategory.add(response.body().get(i));
                 }
 
 
@@ -319,18 +345,18 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
 
 
                 for (int i = 0; i < response.body().getItems().size(); i++) {
-                    infoRestItem.add(response.body().getItems().get(i));
+                    mListAllFood.add(response.body().getItems().get(i));
                 }
-                for (int i = 0; i < infoRestItem.size(); i++) {
-                    if (infoRest.get(0).getId().equals(infoRestItem.get(i).getCategoryId())) {
-                        test.add(infoRestItem.get(i));
+                for (int i = 0; i < mListAllFood.size(); i++) {
+                    if (mFoodCategory.get(0).getId().equals(mListAllFood.get(i).getCategoryId())) {
+                        test.add(mListAllFood.get(i));
 
                     }
                 }
                 initTabLayout();
                 initMainRecycler();
 
-                Log.d("Gorilla", String.valueOf(infoRestItem.size()));
+                Log.d("Gorilla", String.valueOf(mListAllFood.size()));
             }
 
             @Override
