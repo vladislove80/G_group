@@ -16,7 +16,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.oleynikov.hp.g_group.R;
 import com.oleynikov.hp.g_group.REST.RetrofitApi;
-import com.oleynikov.hp.g_group.model.Image;
 import com.oleynikov.hp.g_group.model.Info;
 import com.oleynikov.hp.g_group.model.Post;
 
@@ -24,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -66,7 +66,9 @@ public class SplashActivity extends AppCompatActivity {
 
     private void initializationRetrofit() {
 
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addInterceptor(logging);
         retrofit = new retrofit2.Retrofit.Builder()
                 .baseUrl("http://g-group.com.ua/")
                 .client(httpClient.build())
