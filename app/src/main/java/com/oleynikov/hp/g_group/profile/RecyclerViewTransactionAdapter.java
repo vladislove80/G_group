@@ -1,4 +1,4 @@
-package com.oleynikov.hp.g_group.adapters;
+package com.oleynikov.hp.g_group.profile;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

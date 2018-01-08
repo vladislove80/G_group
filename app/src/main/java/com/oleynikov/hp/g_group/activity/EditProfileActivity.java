@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 
 import com.oleynikov.hp.g_group.R;
 import com.oleynikov.hp.g_group.other.ImagePicker;
+import com.oleynikov.hp.g_group.profile.ProfileActivity;
 
 import java.io.ByteArrayOutputStream;
 

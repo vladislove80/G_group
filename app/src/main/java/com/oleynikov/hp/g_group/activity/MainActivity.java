@@ -24,6 +24,7 @@ import com.oleynikov.hp.g_group.R;
 import com.oleynikov.hp.g_group.adapters.SharesRecyclerViewAdapter;
 import com.oleynikov.hp.g_group.model.Info;
 import com.oleynikov.hp.g_group.model.Restaurant;
+import com.oleynikov.hp.g_group.profile.ProfileActivity;
 
 import java.util.ArrayList;
 

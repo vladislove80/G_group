@@ -1,4 +1,4 @@
-package com.oleynikov.hp.g_group.adapters;
+package com.oleynikov.hp.g_group.profile;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.oleynikov.hp.g_group.R;
-import com.oleynikov.hp.g_group.activity.ProfileActivity;
 
 import java.util.List;
 

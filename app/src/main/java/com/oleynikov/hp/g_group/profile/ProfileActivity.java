@@ -1,4 +1,4 @@
-package com.oleynikov.hp.g_group.activity;
+package com.oleynikov.hp.g_group.profile;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -17,8 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.oleynikov.hp.g_group.R;
-import com.oleynikov.hp.g_group.adapters.RecyclerViewBalanceCardAdapter;
-import com.oleynikov.hp.g_group.adapters.RecyclerViewTransactionAdapter;
+import com.oleynikov.hp.g_group.activity.EditProfileActivity;
 import com.oleynikov.hp.g_group.other.Transaction;
 
 import java.util.ArrayList;
@@ -63,8 +62,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
 
         // Adding items to RecyclerView.
-        AddBalanceCardToRecyclerViewArrayList();
-        AddListTransactionToRecyclerViewArrayList();
+        addBalanceCardToRecyclerViewArrayList();
+        addListTransactionToRecyclerViewArrayList();
 
         mRecyclerViewHorizontalAdapter = new RecyclerViewBalanceCardAdapter(mBalance);
         mHorizontalLayout = new LinearLayoutManager(ProfileActivity.this, LinearLayoutManager.HORIZONTAL, false);
@@ -222,7 +221,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     // function to add items in RecyclerView.
-    public void AddBalanceCardToRecyclerViewArrayList(){
+    public void addBalanceCardToRecyclerViewArrayList(){
 
         mBalance = new ArrayList<>();
         mBalance.add(new Balance ("ONE","Normal"));
@@ -234,7 +233,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    private void AddListTransactionToRecyclerViewArrayList() {
+    private void addListTransactionToRecyclerViewArrayList() {
         mTransaction = new ArrayList<>();
         mTransaction.add(new Transaction("22.01.22","00:00:00","34.50"));
         mTransaction.add(new Transaction("22.01.22","00:00:00","34.50"));
