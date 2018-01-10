@@ -113,7 +113,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void showAlertDialog(String text) {
         if (alertDialog == null) alertDialog = new AlertDialog.Builder(this).create();
-        else if (!alertDialog.isShowing()) {
+        if (!alertDialog.isShowing()) {
             alertDialog.setTitle("Ошибка!");
             alertDialog.setMessage(text);
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
