@@ -2,202 +2,128 @@ package com.oleynikov.hp.g_group.activity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.oleynikov.hp.g_group.GgroopApplication;
 import com.oleynikov.hp.g_group.R;
-import com.oleynikov.hp.g_group.REST.RetrofitApi;
+import com.oleynikov.hp.g_group.Utils;
+import com.oleynikov.hp.g_group.activity.main.view.MainActivity;
+import com.oleynikov.hp.g_group.data.Callback;
+import com.oleynikov.hp.g_group.data.NoDataExeption;
 import com.oleynikov.hp.g_group.model.Info;
-import com.oleynikov.hp.g_group.model.Post;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.converter.gson.GsonConverterFactory;
-
 public class SplashActivity extends AppCompatActivity {
-    private Gson gson;
-    private retrofit2.Retrofit retrofit;
-    private List<String> idPost;
-    private ArrayList<Info> mainListInfoImage = new ArrayList<Info>();
-    private List<String> sourseURLImage;
+
+    public static final String TAG = SplashActivity.class.getSimpleName();
     private boolean isConnected = false;
     private BroadcastReceiver broadcastReceiverNetworkState;
-    private boolean checkRegistr = false;
-    public static final String LIST_INFO = "listInfo";
-
+    private boolean isReceiverRegistered = false;
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        idPost = new ArrayList<>();
-        sourseURLImage = new ArrayList<>();
-        initializationGson();
-        initializationRetrofit();
+        if (Utils.isConnected(this)) {
+            getPostID(this);
+        } else {
+            showAlertDialog(getString(R.string.internet_alert));
+            initializationBroadCastNetwork();
+        }
+    }
 
-
-        new AsyncTask<Void, Void, Void>() {
+    public void getPostID(final Context context) {
+        GgroopApplication.getRepository().getInfoFromPosts(new Callback<List<Info>>() {
             @Override
-            protected Void doInBackground(Void... params) {
-
-                getPostID();
-
-                return null;
+            public void onSuccess(List<Info> data) {
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
             }
 
-        }.execute();
-
-    }
-
-    private void initializationRetrofit() {
-
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addInterceptor(logging);
-        retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl("http://g-group.com.ua/")
-                .client(httpClient.build())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-    }
-
-    private void initializationGson() {
-        GsonBuilder builder = new GsonBuilder();
-        gson = builder.create();
-    }
-
-    public void getPostID() {
-
-        RetrofitApi retrofitApi = retrofit.create(RetrofitApi.class);
-        Call<List<Post>> call = retrofitApi.getIdPost();
-
-
-        call.enqueue(new Callback<List<Post>>() {
             @Override
-            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-
-                for (int i = 0; i < response.body().size(); i++) {
-                    idPost.add(response.body().get(i).getFeaturedMedia());
-
-                    mainListInfoImage.add(new Info(response.body().get(i).getTitle().getRendered(), ""));
-
-
+            public void onError(Throwable throwable) {
+                Log.d(TAG, "onError: isConnected = " + isConnected);
+                if (throwable instanceof NoDataExeption) {
+                    showAlertDialog(getString(R.string.server_alert));
+                    return;
                 }
-
-
-                String array = idPost.toString();
-
-                RetrofitApi retrofitApi = retrofit.create(RetrofitApi.class);
-                Call<List<Post>> call1 = retrofitApi.getImage(array.replace("[", "").replace("]", ""));
-
-                call1.enqueue(new Callback<List<Post>>() {
-                    @Override
-                    public void onResponse(Call<List<Post>> call1, Response<List<Post>> response) {
-                        for (int i = 0; i < response.body().size(); i++) {
-
-                            mainListInfoImage.get(i).setSourceUrl(response.body().get(i).getSourceUrl());
-
-                        }
-
-
-                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                        intent.putExtra(LIST_INFO, mainListInfoImage);
-                        startActivity(intent);
-
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<Post>> call1, Throwable t) {
-                        Log.d("False", "FalseDownloadImage");
-                    }
-                });
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Post>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Включите интернет", Toast.LENGTH_SHORT).show();
-                initializationBroadCastNetwork();
-
+                showAlertDialog(getString(R.string.connection_alert));
+                if (!isReceiverRegistered) initializationBroadCastNetwork();
             }
         });
-
-    }
-
-    @Override
-    protected void onPause() {
-
-        super.onPause();
-        if (checkRegistr == true) {
-            unregisterReceiver(broadcastReceiverNetworkState);
-            Log.d("Unregisrer", "StopBroadcast");
-
-        }
-        finish();
-
     }
 
     private void initializationBroadCastNetwork() {
+        Log.d(TAG, "initializationBroadCastNetwork: isReceiverRegistered = " + isReceiverRegistered);
         broadcastReceiverNetworkState = new BroadcastReceiver() {
-
-
             @Override
             public void onReceive(Context context, Intent intent) {
-
+                Log.d(TAG, "onReceive: ");
                 isNetworkAvailable(context);
-
             }
 
-            private boolean isNetworkAvailable(Context context) {
-                ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-                if (connectivity != null) {
-                    NetworkInfo[] info = connectivity.getAllNetworkInfo();
-                    if (info != null) {
-                        for (int i = 0; i < info.length; i++) {
-                            if (info[i].getState() == NetworkInfo.State.CONNECTED) {
-                                if (!isConnected) {
-
-                                    getPostID();
-
-                                    isConnected = true;
-
-
-                                }
-                                return true;
-                            }
-                        }
-                    }
+            private void isNetworkAvailable(Context context) {
+                if (Utils.isConnected(context)) {
+                    lazyRequest();
+                    return;
                 }
-
                 isConnected = false;
-                return false;
             }
-
         };
 
         IntentFilter intentNetwork = new IntentFilter();
-        intentNetwork.addAction("android.net.wifi.WIFI_STATE_CHANGED");
         intentNetwork.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         registerReceiver(broadcastReceiverNetworkState, intentNetwork);
-        checkRegistr = true;
-
+        isReceiverRegistered = true;
     }
 
+    private void lazyRequest() {
+        Log.d(TAG, "isNetworkAvailable -> isConnected " + isConnected);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (!isConnected) {
+                    getPostID(SplashActivity.this);
+                    isConnected = true;
+                }
+            }
+        }, 3000);
+    }
 
+    @Override
+    protected void onStop() {
+        Log.d(TAG, "onStop: ");
+        super.onStop();
+        if (isReceiverRegistered) {
+            unregisterReceiver(broadcastReceiverNetworkState);
+            Log.d(TAG, "StopBroadcast");
+        }
+        finish();
+    }
+
+    private void showAlertDialog(String text) {
+        if (alertDialog == null) alertDialog = new AlertDialog.Builder(this).create();
+        else if (!alertDialog.isShowing()) {
+            alertDialog.setTitle("Ошибка!");
+            alertDialog.setMessage(text);
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            isConnected = false;
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+        }
+    }
 }

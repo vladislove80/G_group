@@ -15,7 +15,7 @@ import com.shamanland.facebook.likebutton.FacebookLikeButton;
 
 import java.util.ArrayList;
 
-import static com.oleynikov.hp.g_group.activity.MainActivity.rest;
+import static com.oleynikov.hp.g_group.activity.main.view.MainActivity.rest;
 
 public class ShareActivity extends AppCompatActivity {
 
@@ -82,7 +82,6 @@ public class ShareActivity extends AppCompatActivity {
         }
 
     }
-
 
     @Override
     protected void onPause() {

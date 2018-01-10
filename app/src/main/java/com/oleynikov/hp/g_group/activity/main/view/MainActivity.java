@@ -1,4 +1,4 @@
-package com.oleynikov.hp.g_group.activity;
+package com.oleynikov.hp.g_group.activity.main.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,23 +20,34 @@ import android.widget.TextView;
 import com.azoft.carousellayoutmanager.CarouselLayoutManager;
 import com.azoft.carousellayoutmanager.CarouselZoomPostLayoutListener;
 import com.azoft.carousellayoutmanager.CenterScrollListener;
+import com.oleynikov.hp.g_group.GgroopApplication;
 import com.oleynikov.hp.g_group.R;
-import com.oleynikov.hp.g_group.adapters.SharesRecyclerViewAdapter;
+import com.oleynikov.hp.g_group.activity.AboutUsActivity;
+import com.oleynikov.hp.g_group.activity.DeliveryActivity;
+import com.oleynikov.hp.g_group.activity.EventActivity;
+import com.oleynikov.hp.g_group.activity.LogoActivity;
+import com.oleynikov.hp.g_group.activity.ShareActivity;
+import com.oleynikov.hp.g_group.activity.ViewImageActivity;
+import com.oleynikov.hp.g_group.activity.main.InfoListener;
+import com.oleynikov.hp.g_group.adapters.InfoRecyclerViewAdapter;
+import com.oleynikov.hp.g_group.data.Callback;
 import com.oleynikov.hp.g_group.model.Info;
 import com.oleynikov.hp.g_group.model.Restaurant;
 import com.oleynikov.hp.g_group.profile.ProfileActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.oleynikov.hp.g_group.activity.RegistrationActivity.SAVED_IMAGE;
-import static com.oleynikov.hp.g_group.activity.SplashActivity.LIST_INFO;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements InfoListener, View.OnClickListener {
+    public static final String TAG = MainActivity.class.getSimpleName();
     public static final String rest = "rest";
     private RecyclerView mSharesRecyclerView;
+    private InfoRecyclerViewAdapter myRecyclerAdapter;
     private DrawerLayout mDrawerLayout;
     private ImageButton mImageButtonOpenNB;
     private ImageButton mImageButtonHotPerci;
@@ -51,55 +62,64 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView mTextViewSharesTheme;
     private int prevCenterPos;
 
-
     CircleImageView mCircleImageView;
 
     private ArrayList<Restaurant> listRest = new ArrayList<Restaurant>();
     private Intent intent;
-    private ArrayList<Info> list;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         intent = new Intent(this, ShareActivity.class);
-        Intent i = getIntent();
-//        list.clear();
-        list = (ArrayList<Info>) i
-                .getSerializableExtra(LIST_INFO);
+        initViews();
+        setListeners();
+        initNavigationDrawer();
+        initRecycler();
 
+        GgroopApplication.getRepository().getInfoFromPosts(new Callback<List<Info>>() {
+            @Override
+            public void onSuccess(final List<Info> data) {
+                myRecyclerAdapter.notifyInfoAdapter(data);
+                addScrolListener(data);
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+            }
+        });
+    }
+
+    private void setListeners() {
+        mImageButtonOpenNB.setOnClickListener(this);
+        mImageButtonAlMezze.setOnClickListener(this);
+        mImageButtonElevenDogs.setOnClickListener(this);
+        mImageButtonHotPerci.setOnClickListener(this);
+        mImageButtonHotPerciChernomorsk.setOnClickListener(this);
+        mImageButtonHotPerciGovorova.setOnClickListener(this);
+        mImageButtonKinza.setOnClickListener(this);
+        mButtonFavoriteClient.setOnClickListener(this);
+        mButtonDelivery.setOnClickListener(this);
+    }
+
+    private void initViews() {
         mTextViewSharesTheme = (TextView) findViewById(R.id.textViewSharesTheme);
         mCircleImageView = (CircleImageView) findViewById(R.id.profile_image);
         mSharesRecyclerView = (RecyclerView) findViewById(R.id.rcyList);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mImageButtonOpenNB = (ImageButton) findViewById(R.id.imageButtonNavigationPanel);
-        mImageButtonOpenNB.setOnClickListener(this);
         mImageButtonAlMezze = (ImageButton) findViewById(R.id.imageButtonAlMezze);
-        mImageButtonAlMezze.setOnClickListener(this);
         mImageButtonElevenDogs = (ImageButton) findViewById(R.id.imageButtonEleven);
-        mImageButtonElevenDogs.setOnClickListener(this);
         mImageButtonHotPerci = (ImageButton) findViewById(R.id.imageButtonCoroleva);
-        mImageButtonHotPerci.setOnClickListener(this);
         mImageButtonHotPerciChernomorsk = (ImageButton) findViewById(R.id.imageButtonHotChernomors);
-        mImageButtonHotPerciChernomorsk.setOnClickListener(this);
         mImageButtonHotPerciGovorova = (ImageButton) findViewById(R.id.imageButtonGovorova);
-        mImageButtonHotPerciGovorova.setOnClickListener(this);
         mImageButtonKinza = (ImageButton) findViewById(R.id.imageButtonKinza);
-        mImageButtonKinza.setOnClickListener(this);
         mButtonFavoriteClient = (Button) findViewById(R.id.buttonFavoriteClient);
-        mButtonFavoriteClient.setOnClickListener(this);
         mButtonDelivery = (Button) findViewById(R.id.buttonDelivery);
-        mButtonDelivery.setOnClickListener(this);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         View hView = mNavigationView.getHeaderView(0);
         mCircleImageView = (CircleImageView) hView.findViewById(R.id.profile_image);
-        initNavigationDrawer();
-        initRecycler();
-
-
     }
 
     @Override
@@ -107,7 +127,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (view.getId()) {
             case R.id.imageButtonNavigationPanel:
-
                 mDrawerLayout.openDrawer(mNavigationView);
                 getImageSharedPreferences();
                 break;
@@ -118,58 +137,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(MainActivity.this, DeliveryActivity.class));
                 break;
             case R.id.imageButtonAlMezze:
-
-
                 listRest.clear();
                 listRest.add(new Restaurant(getString(R.string.AlMezze), getString(R.string.AlMezzeAdress), getString(R.string.AlMezzeAbout), getString(R.string.AlMezzeURL), getString(R.string.AlMezzeFB)));
                 intent.putExtra(rest, listRest);
-
-
                 startActivity(intent);
                 break;
             case R.id.imageButtonCoroleva:
                 listRest.clear();
                 listRest.add(new Restaurant(getString(R.string.CorolevaName), getString(R.string.CorolevaAdress), getString(R.string.CorolevaAbout), getString(R.string.CorolevaURL), getString(R.string.CorolevaFB)));
-
                 intent.putExtra(rest, listRest);
                 startActivity(intent);
                 break;
             case R.id.imageButtonEleven:
-
                 listRest.clear();
                 listRest.add(new Restaurant(getString(R.string.ElevenDogsName), getString(R.string.ElevenDogsAdress), getString(R.string.ElevenDogsAbout), getString(R.string.ElevenDogsURL), getString(R.string.ElevenDogsFB)));
-
                 intent.putExtra(rest, listRest);
                 startActivity(intent);
                 break;
             case R.id.imageButtonKinza:
-
                 listRest.clear();
                 listRest.add(new Restaurant(getString(R.string.KinzaName), getString(R.string.KinzaAdress), getString(R.string.KinzaAbout), getString(R.string.KinzaURL), getString(R.string.KinzaFB)));
-
                 intent.putExtra(rest, listRest);
                 startActivity(intent);
-
                 break;
             case R.id.imageButtonGovorova:
-
                 listRest.clear();
                 listRest.add(new Restaurant(getString(R.string.GovorovaName), getString(R.string.GovorovaAdress), getString(R.string.GovorovaAbout), getString(R.string.GovorovaURL), getString(R.string.GovorovaFB)));
-
                 intent.putExtra(rest, listRest);
                 startActivity(intent);
                 break;
             case R.id.imageButtonHotChernomors:
-
                 listRest.clear();
                 listRest.add(new Restaurant(getString(R.string.ChernomorskName), getString(R.string.ChernomorskAdress), getString(R.string.ChernomorskAbout), getString(R.string.ChernomorskURL), getString(R.string.ChernomorskFB)));
                 intent.putExtra(rest, listRest);
-
-
                 startActivity(intent);
                 break;
-
-
         }
     }
 
@@ -177,88 +179,57 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final CarouselLayoutManager layoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL, true);
         mSharesRecyclerView.setHasFixedSize(true);
         layoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
-        SharesRecyclerViewAdapter myRecyclerAdapter = new SharesRecyclerViewAdapter(this, list);
+        myRecyclerAdapter = new InfoRecyclerViewAdapter(this, new ArrayList<Info>(), this);
         mSharesRecyclerView.setAdapter(myRecyclerAdapter);
         mSharesRecyclerView.setLayoutManager(layoutManager);
         mSharesRecyclerView.addOnScrollListener(new CenterScrollListener());
         mSharesRecyclerView.setFocusable(true);
         mSharesRecyclerView.requestFocus();
-        mTextViewSharesTheme.setText(list.get(mSharesRecyclerView.getWidth() / 2).getRendered());
-        mSharesRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+    }
 
+    private void addScrolListener(final List<Info> data) {
+        mSharesRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-
                 int center = mSharesRecyclerView.getWidth() / 2;
                 View centerView = mSharesRecyclerView.findChildViewUnder(center, mSharesRecyclerView.getTop());
                 int centerPos = mSharesRecyclerView.getChildAdapterPosition(centerView);
-
                 if (prevCenterPos != centerPos) {
-
-                    View prevView = mSharesRecyclerView.getLayoutManager().findViewByPosition(prevCenterPos);
-                    if (prevView != null) {
-
-                    }
-
-
                     if (centerView != null) {
-                        mTextViewSharesTheme.setText(list.get(centerPos).getRendered());
-
+                        mTextViewSharesTheme.setText(data.get(centerPos).getRendered());
                     }
-
                     prevCenterPos = centerPos;
                 }
             }
         });
-
-
     }
 
     public void initNavigationDrawer() {
-
-
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-
                 int id = menuItem.getItemId();
-
                 switch (id) {
                     case R.id.favoriteClient:
-
                         startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-
                         break;
                     case R.id.delivery:
-
                         startActivity(new Intent(MainActivity.this, DeliveryActivity.class));
-
-
                         break;
                     case R.id.event:
                         startActivity(new Intent(MainActivity.this, EventActivity.class));
-
                         break;
-
                     case R.id.about_us:
                         startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
-
                         break;
-
-
                 }
                 return true;
             }
         });
-
-
     }
 
-
-    public void getImageSharedPreferences()
-
-    {
+    public void getImageSharedPreferences() {
         SharedPreferences shre = PreferenceManager.getDefaultSharedPreferences(this);
         String previouslyEncodedImage = shre.getString(SAVED_IMAGE, "");
 
@@ -267,9 +238,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Bitmap bitmap = BitmapFactory.decodeByteArray(b, 0, b.length);
             mCircleImageView.setImageBitmap(bitmap);
         }
-
-
     }
 
-
+    @Override
+    public void onInfoItemClick(String sourceUrl) {
+        intent = new Intent(this, ViewImageActivity.class);
+        intent.putExtra("URL", sourceUrl);
+        startActivity(intent);
+    }
 }

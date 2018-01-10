@@ -101,4 +101,10 @@
     <string name="address">Адрес доставки</string>
     <string name="OnTime">На время</string>
     <string name="RightNow">На сейчас</string>
+
+    <!--SplashActivity-->
+    <string name="internet_alert">Включите интернет</string>
+    <string name="server_alert">Сервер не отвечает. Попробуйте позже!</string>
+    <string name="connection_alert">Нет соединения!</string>
+
 </resources>

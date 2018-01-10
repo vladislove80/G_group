@@ -43,7 +43,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.CustomViewHo
         CustomViewHolder viewHolder = new CustomViewHolder(view);
 
 
-//        SharesRecyclerViewAdapter.CustomViewHolder viewHolder = new SharesRecyclerViewAdapter.CustomViewHolder(view);
+//        InfoRecyclerViewAdapter.CustomViewHolder viewHolder = new InfoRecyclerViewAdapter.CustomViewHolder(view);
 
 
         return viewHolder;
