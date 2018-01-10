@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_5882_1024_x_680"
-    tools:context="com.oleynikov.hp.g_group.activity.AboutUsActivity">
+    tools:context="com.oleynikov.hp.ggroup.activity.AboutUsActivity">
 
 
     <ImageView

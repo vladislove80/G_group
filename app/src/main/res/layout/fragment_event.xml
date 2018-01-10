@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/img_5882_1024_x_680"
     android:orientation="vertical"
-    tools:context="com.oleynikov.hp.g_group.fragment.ShareFragment">
+    tools:context="com.oleynikov.hp.ggroup.fragment.ShareFragment">
 
 
     <LinearLayout

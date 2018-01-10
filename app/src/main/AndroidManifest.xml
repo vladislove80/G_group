@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.oleynikov.hp.g_group">
+    package="com.oleynikov.hp.ggroup">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -10,14 +10,14 @@
 
     <application
         android:allowBackup="true"
-        android:name=".GgroopApplication"
+        android:name="com.oleynikov.hp.ggroup.GgroopApplication"
         android:icon="@drawable/ic_launcher_app"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".activity.SplashActivity"
+            android:name="com.oleynikov.hp.ggroup.activity.SplashActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -27,31 +27,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.AboutUsActivity"
+            android:name="com.oleynikov.hp.ggroup.activity.AboutUsActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.LogoActivity"
+            android:name="com.oleynikov.hp.ggroup.activity.LogoActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.RegistrationActivity"
+            android:name="com.oleynikov.hp.ggroup.activity.RegistrationActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.EditProfileActivity"
+            android:name="com.oleynikov.hp.ggroup.activity.EditProfileActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".profile.ProfileActivity"
+            android:name="com.oleynikov.hp.ggroup.profile.ProfileActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.DeliveryActivity"
+            android:name="com.oleynikov.hp.ggroup.activity.DeliveryActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ChoiceActivity"
+            android:name="com.oleynikov.hp.ggroup.activity.ChoiceActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
@@ -59,26 +59,26 @@
             android:label="@string/com_shamanland_facebook"
             android:theme="@style/Theme.Facebook.Like" />
         <activity
-            android:name=".activity.EventActivity"
+            android:name="com.oleynikov.hp.ggroup.activity.EventActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_calendar"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".activity.ShareActivity"
+            android:name="com.oleynikov.hp.ggroup.activity.ShareActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_share"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".activity.ViewImageActivity"
+            android:name="com.oleynikov.hp.ggroup.activity.ViewImageActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.main.view.MainActivity"
+            android:name="com.oleynikov.hp.ggroup.activity.main.view.MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.CreateOrderActivity"
+        <activity android:name="com.oleynikov.hp.ggroup.activity.CreateOrderActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
 

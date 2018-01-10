@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/black"
     android:orientation="vertical"
-    tools:context="com.oleynikov.hp.g_group.activity.LogoActivity">
+    tools:context="com.oleynikov.hp.ggroup.activity.LogoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

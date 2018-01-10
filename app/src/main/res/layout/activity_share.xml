@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/img_5882_1024_x_680"
     android:orientation="vertical"
-    tools:context="com.oleynikov.hp.g_group.activity.ShareActivity">
+    tools:context="com.oleynikov.hp.ggroup.activity.ShareActivity">
 
 
     <LinearLayout

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.oleynikov.hp.g_group.activity.RegistrationActivity">
+    tools:context="com.oleynikov.hp.ggroup.activity.RegistrationActivity">
 
     <RelativeLayout
         android:id="@+id/relativeWithPhotoPicker"

@@ -7,7 +7,7 @@
     android:layout_alignParentRight="true"
     android:background="@android:color/black"
     android:orientation="vertical"
-    tools:context="com.oleynikov.hp.g_group.activity.EventActivity">
+    tools:context="com.oleynikov.hp.ggroup.activity.EventActivity">
 
 
     <RelativeLayout
