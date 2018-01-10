@@ -40,16 +40,16 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Sort"
+            android:layout_gravity="center"
             android:layout_weight="0"
-            android:layout_gravity="center"/>
+            android:text="@string/Sort" />
 
         <ImageView
             android:id="@+id/imageViewRotate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3"
             android:layout_gravity="center"
+            android:layout_weight="0.3"
             android:rotation="180"
             app:srcCompat="@drawable/ic_keyboard_arrow_down_white_24_px" />
 
@@ -67,9 +67,9 @@
         android:id="@+id/LinearLayoutOpen"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:animateLayoutChanges="true"
         android:background="@android:color/black"
-        android:orientation="horizontal"
-        android:animateLayoutChanges="true">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/buttonOnDate"
@@ -102,15 +102,14 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:background="@android:color/black"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="12dp"
             android:id="@+id/textViewTransactionTime"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="12dp"
             android:gravity="center"
             android:text="@string/TransactionTime" />
 
@@ -118,10 +117,10 @@
             android:id="@+id/editText"
             android:layout_width="49dp"
             android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
-            android:ems="10"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/textViewTransactionTime"
+            android:background="@android:color/background_light"
+            android:ems="10"
             android:inputType="number" />
 
         <TextView
@@ -129,20 +128,19 @@
             android:id="@+id/textViewOn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginRight="7dp"
             android:layout_centerVertical="true"
+            android:layout_marginRight="7dp"
             android:layout_toLeftOf="@+id/editTextLastDate"
+            android:gravity="center"
             android:text="@string/On" />
 
         <EditText
             android:id="@+id/editTextLastDate"
             android:layout_width="48dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-
+            android:layout_marginRight="20dp"
             android:background="@android:color/background_light"
             android:ems="10"
             android:inputType="number" />
@@ -151,12 +149,11 @@
     <LinearLayout
         android:id="@+id/layoutRVCard"
         android:layout_width="match_parent"
-
         android:layout_height="90dp"
         android:orientation="horizontal">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewProfile"
+            android:id="@+id/recyclerViewCards"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="horizontal" />
@@ -172,25 +169,24 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/Time"
-            android:textColor="#4a4a4a"
             android:gravity="center|left"
             android:paddingLeft="24dp"
-            />
+            android:text="@string/Time"
+            android:textColor="#4a4a4a" />
 
         <TextView
             android:id="@+id/textViewCost"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/Cost"
             android:gravity="center|right"
-            android:textColor="#4a4a4a"
-            android:paddingRight="24dp"/>
+            android:paddingRight="24dp"
+            android:text="@string/Cost"
+            android:textColor="#4a4a4a" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerTransaction"
+        android:id="@+id/recyclerTransactions"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
