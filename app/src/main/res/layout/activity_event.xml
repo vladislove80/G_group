@@ -9,7 +9,6 @@
     android:orientation="vertical"
     tools:context="com.oleynikov.hp.ggroup.activity.EventActivity">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -39,8 +38,7 @@
             android:layout_marginTop="24dp"
             android:background="@android:color/transparent"
             android:padding="20dp"
-            android:rotation="270"
-            app:srcCompat="@drawable/ic_keyboard_arrow_down_white_24_px" />
+            app:srcCompat="@drawable/ic_left_navigation_24dp" />
 
         <ImageButton
             android:id="@+id/imageButtonNextRest"
@@ -51,8 +49,7 @@
             android:layout_marginRight="30dp"
             android:background="@android:color/transparent"
             android:padding="20dp"
-            android:rotation="90"
-            app:srcCompat="@drawable/ic_keyboard_arrow_down_white_24_px" />
+            app:srcCompat="@drawable/ic_right_navigation_24dp" />
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
