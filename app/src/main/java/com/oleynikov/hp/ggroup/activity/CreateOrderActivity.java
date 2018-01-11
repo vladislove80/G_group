@@ -2,8 +2,8 @@ package com.oleynikov.hp.ggroup.activity;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -39,7 +39,7 @@ public class CreateOrderActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private String mLogin = "ggroup@integration.com";
     private String mPassword = "ggroup123";
-    private String mToken ;
+    private String mToken;
     private String mAddress;
     private String mUserName;
     private String mUserPhone;
@@ -67,7 +67,7 @@ public class CreateOrderActivity extends AppCompatActivity {
         initializationGson();
         initializationRetrofit();
         login();
-        mTextViewCostOrder = (TextView) findViewById(R.id.textViewCostOrder) ;
+        mTextViewCostOrder = (TextView) findViewById(R.id.textViewCostOrder);
         mEditTextName = (EditText) findViewById(R.id.editTextName);
         mEditTextPhone = (EditText) findViewById(R.id.editTextPhone);
         mEditTextAddress = (EditText) findViewById(R.id.editTextAddress);
@@ -136,7 +136,7 @@ public class CreateOrderActivity extends AppCompatActivity {
                     Log.d("RadioSms", String.valueOf(mNoSms));
                     break;
                 case R.id.radioRightNow:
-                    mTime = String.valueOf(dateAndTime.get(Calendar.HOUR_OF_DAY))+ ":" + String.valueOf(dateAndTime.get(Calendar.MINUTE));
+                    mTime = String.valueOf(dateAndTime.get(Calendar.HOUR_OF_DAY)) + ":" + String.valueOf(dateAndTime.get(Calendar.MINUTE));
                     Log.d("RadioNow", mTime);
 
                     break;
@@ -154,7 +154,7 @@ public class CreateOrderActivity extends AppCompatActivity {
 
     protected Dialog onCreateDialog(int id) {
         if (id == DIALOG_TIME) {
-            TimePickerDialog tpd = new TimePickerDialog(this,R.style.DialogTheme,  myCallBack, dateAndTime.get(Calendar.HOUR_OF_DAY), dateAndTime.get(Calendar.MINUTE), true);
+            TimePickerDialog tpd = new TimePickerDialog(this, R.style.DialogTheme, myCallBack, dateAndTime.get(Calendar.HOUR_OF_DAY), dateAndTime.get(Calendar.MINUTE), true);
 
             return tpd;
         }
@@ -163,22 +163,22 @@ public class CreateOrderActivity extends AppCompatActivity {
 
     TimePickerDialog.OnTimeSetListener myCallBack = new TimePickerDialog.OnTimeSetListener() {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            mTime = String.valueOf(hourOfDay)+ ":" + String.valueOf(minute);
+            mTime = String.valueOf(hourOfDay) + ":" + String.valueOf(minute);
             Log.d("Time", String.valueOf(mTime));
         }
     };
 
-    public void getCostOrder()
-    {
+    public void getCostOrder() {
         int sum = 0;
-        for(int i =0;i <mFoodList.size();i++){
-            int foo = Integer.parseInt(mFoodList.get(i).getPrice())* mFoodList.get(i).getCount();
+        for (int i = 0; i < mFoodList.size(); i++) {
+            int foo = Integer.parseInt(mFoodList.get(i).getPrice()) * mFoodList.get(i).getCount();
             sum = (sum + foo);
 
         }
         mTextViewCostOrder.setText(String.valueOf(sum));
 
     }
+
     private void initializationGson() {
         GsonBuilder builder = new GsonBuilder();
         gson = builder.create();
@@ -194,9 +194,9 @@ public class CreateOrderActivity extends AppCompatActivity {
                 .build();
         gorillaApi = retrofit.create(GorillaApi.class);
     }
-    public void createOrder()
-    {
-        Call<Order> call = gorillaApi.createOrder("Bearer "+mToken);
+
+    public void createOrder() {
+        Call<Order> call = gorillaApi.createOrder("Bearer " + mToken);
         call.enqueue(new Callback<Order>() {
             @Override
             public void onResponse(Call<Order> call, Response<Order> response) {
@@ -209,16 +209,17 @@ public class CreateOrderActivity extends AppCompatActivity {
             }
         });
     }
-    public void login(){
 
-        Call<LoginGorilla> call = gorillaApi.login(mLogin,mPassword);
+    public void login() {
+
+        Call<LoginGorilla> call = gorillaApi.login(mLogin, mPassword);
 
         call.enqueue(new Callback<LoginGorilla>() {
             @Override
             public void onResponse(Call<LoginGorilla> call, Response<LoginGorilla> response) {
-                Log.d("token",response.body().getToken());
+                Log.d("token", response.body().getToken());
                 mToken = response.body().getToken();
-                Log.d("token",mToken);
+                Log.d("token", mToken);
 
 
             }
@@ -230,8 +231,9 @@ public class CreateOrderActivity extends AppCompatActivity {
         });
 
     }
-    public void logout(){
-        Call  call = gorillaApi.logout("Bearer "+mToken);
+
+    public void logout() {
+        Call call = gorillaApi.logout("Bearer " + mToken);
         call.enqueue(new Callback<Order>() {
             @Override
             public void onResponse(Call call, Response response) {

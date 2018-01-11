@@ -70,8 +70,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 byte[] b = baos.toByteArray();
                 String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
                 SharedPreferences shre = PreferenceManager.getDefaultSharedPreferences(this);
-                SharedPreferences.Editor edit=shre.edit();
-                edit.putString(SAVED_IMAGE,encodedImage);
+                SharedPreferences.Editor edit = shre.edit();
+                edit.putString(SAVED_IMAGE, encodedImage);
                 edit.commit();
                 break;
             default:

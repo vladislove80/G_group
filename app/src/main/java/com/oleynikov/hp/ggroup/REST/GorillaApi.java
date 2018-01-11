@@ -1,11 +1,9 @@
 package com.oleynikov.hp.ggroup.REST;
 
 import com.oleynikov.hp.ggroup.model.FoodCategory;
-
 import com.oleynikov.hp.ggroup.model.FoodItem;
 import com.oleynikov.hp.ggroup.model.LoginGorilla;
 import com.oleynikov.hp.ggroup.model.Order;
-
 
 import java.util.List;
 
@@ -28,11 +26,11 @@ public interface GorillaApi {
     Call<FoodItem> getItem(@Query("storeId") int storeId, @Query("perPage") int perPage);
 
     @POST("/api/v1/auth/login")
-    Call<LoginGorilla> login(@Query("login") String login , @Query("password") String password);
+    Call<LoginGorilla> login(@Query("login") String login, @Query("password") String password);
 
     @POST("/api/v1/auth/logout")
-    Call <Order> logout(@Header("Authorization") String headers );
-    @POST("/api/v1/auth/login")
-    Call createOrder(@Header("Authorization") String headers );
+    Call<Order> logout(@Header("Authorization") String headers);
 
+    @POST("/api/v1/auth/login")
+    Call createOrder(@Header("Authorization") String headers);
 }

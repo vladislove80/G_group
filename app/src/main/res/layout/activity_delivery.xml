@@ -20,7 +20,6 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:padding="10dp"
                 android:id="@+id/imageButtonX"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -28,6 +27,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@android:color/transparent"
                 android:gravity="center"
+                android:padding="10dp"
                 app:srcCompat="@drawable/x_image" />
 
             <ImageButton
@@ -65,29 +65,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <android.support.design.widget.TabLayout
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="?attr/actionBarSize"
-                app:textAllCaps="false"
                 app:tabIndicatorColor="#8cc43f"
                 app:tabIndicatorHeight="3dp"
                 app:tabSelectedTextColor="#ffffff"
                 app:tabTextAppearance="@style/MyCustomTextAppearance"
+                app:textAllCaps="false" />
 
-
-                />
             <android.support.v7.widget.RecyclerView
-                android:layout_below="@+id/tab_layout"
+                android:id="@+id/rv_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/rv_recycler_view"/>
-
+                android:layout_below="@+id/tab_layout" />
         </RelativeLayout>
-
-
     </LinearLayout>
 
     <android.support.design.widget.NavigationView
@@ -124,9 +118,9 @@
                         app:srcCompat="@drawable/al_mezze_logo" />
 
                     <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerAlMezzeND"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/recyclerAlMezzeND"/>
+                        android:layout_height="wrap_content" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -151,7 +145,6 @@
                             android:text="Сервис"
                             android:textColor="#545d66"
                             android:textSize="16sp" />
-
 
                         <ImageView
                             android:id="@+id/imageViewMotoX1"
@@ -178,12 +171,11 @@
                         app:srcCompat="@drawable/eleven_dogs_logo" />
 
                     <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerElevenDogsND"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/recyclerElevenDogsND"/>
+                        android:layout_height="wrap_content" />
 
                     <RelativeLayout
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -198,7 +190,6 @@
                             android:textSize="16sp" />
 
                         <TextView
-
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -207,7 +198,6 @@
                             android:text="Сервис"
                             android:textColor="#545d66"
                             android:textSize="16sp" />
-
 
                         <ImageView
                             android:id="@+id/imageViewMotoX2"
@@ -234,12 +224,11 @@
                         app:srcCompat="@drawable/kinza_logo" />
 
                     <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerKinzaND"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/recyclerKinzaND"/>
+                        android:layout_height="wrap_content" />
 
                     <RelativeLayout
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -273,8 +262,6 @@
                     </RelativeLayout>
                 </LinearLayout>
 
-
-
                 <Button
                     android:id="@+id/buttonCreateOrder1"
                     android:layout_width="168dp"
@@ -290,6 +277,5 @@
 
             </LinearLayout>
         </ScrollView>
-
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

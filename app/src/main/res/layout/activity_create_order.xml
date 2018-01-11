@@ -6,60 +6,62 @@
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
     tools:context="com.oleynikov.hp.ggroup.activity.CreateOrderActivity">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="243dp"
-        android:background="#ffd831"
-        >
+        android:background="#ffd831">
 
     </FrameLayout>
+
     <RelativeLayout
         android:id="@+id/relativeTop"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        >
+        android:layout_centerHorizontal="true">
+
         <ImageView
             android:id="@+id/image_logo_gorilla"
             android:layout_width="66dp"
             android:layout_height="69dp"
-            android:src="@drawable/logo_gorilla"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            />
+            android:src="@drawable/logo_gorilla" />
+
         <LinearLayout
-            android:layout_below="@+id/image_logo_gorilla"
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/image_logo_gorilla"
             android:layout_centerHorizontal="true"
-            android:orientation="horizontal"
-            >
-            <TextView
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-                android:textSize="18sp"
-                android:textColor="#000000"
-                android:text="@string/your_order"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
             <TextView
-                android:textStyle="bold"
-                android:layout_marginLeft="4dp"
-                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/your_order"
                 android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
                 android:id="@+id/textViewCostOrder"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:textStyle="bold"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
+                android:textColor="#000000"
                 android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
                 android:text="UAH"
                 android:textColor="#000000"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <ImageView
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
+            <ImageView
                 android:id="@+id/imageButtonMoto"
                 android:layout_width="30dp"
                 android:layout_height="21dp"
@@ -70,73 +72,79 @@
         </LinearLayout>
 
     </RelativeLayout>
+
     <RelativeLayout
-        android:background="@drawable/shadow"
-        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relativeTop"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_below="@+id/relativeTop"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_marginTop="36dp"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <RelativeLayout
+        android:layout_marginTop="24dp"
+        android:background="@drawable/shadow">
 
-                android:layout_centerHorizontal="true"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="36dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
                 <TextView
                     android:id="@+id/textViewName"
-                    android:text="@string/name"
-                    android:textSize="13sp"
-                    android:textColor="#000000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
-                <EditText
-                    android:textAlignment="center"
+                    android:text="@string/name"
                     android:textColor="#000000"
-                    android:background="@drawable/border_edit_text"
-                    android:layout_marginTop="6dp"
-                    android:layout_below="@+id/textViewName"
+                    android:textSize="13sp" />
+
+                <EditText
                     android:id="@+id/editTextName"
-                    android:inputType="text"
                     android:layout_width="238dp"
-                    android:layout_height="25dp" />
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/textViewName"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/border_edit_text"
+                    android:inputType="text"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
             </RelativeLayout>
+
             <RelativeLayout
-                android:layout_marginTop="21dp"
-                android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="21dp">
+
                 <TextView
                     android:id="@+id/textViewPhone"
-                    android:text="@string/phone"
-                    android:textSize="13sp"
-                    android:textColor="#000000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
-                <EditText
-                    android:textAlignment="center"
+                    android:text="@string/phone"
                     android:textColor="#000000"
-                    android:inputType="phone"
-                    android:background="@drawable/border_edit_text"
-                    android:layout_marginTop="6dp"
-                    android:layout_below="@+id/textViewPhone"
+                    android:textSize="13sp" />
+
+                <EditText
                     android:id="@+id/editTextPhone"
                     android:layout_width="238dp"
-                    android:layout_height="25dp" />
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/textViewPhone"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/border_edit_text"
+                    android:inputType="phone"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
             </RelativeLayout>
+
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_marginTop="21dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radioButtonReCall"
@@ -146,13 +154,12 @@
                     android:textColor="#000000"
                     android:textSize="10sp"
                     android:theme="@style/MyRadioButton" />
-
             </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
 
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radioButtonSendSms"
@@ -162,56 +169,60 @@
                     android:textColor="#000000"
                     android:textSize="10sp"
                     android:theme="@style/MyRadioButton" />
-
             </LinearLayout>
+
             <RelativeLayout
-                android:layout_marginTop="21dp"
-                android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="21dp">
+
                 <TextView
                     android:id="@+id/textViewAddress"
-                    android:text="@string/address"
-                    android:textSize="13sp"
-                    android:textColor="#000000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
-                <EditText
-                    android:textAlignment="center"
+                    android:text="@string/address"
                     android:textColor="#000000"
-                    android:inputType="text"
-                    android:background="@drawable/border_edit_text"
-                    android:layout_marginTop="6dp"
-                    android:layout_below="@+id/textViewAddress"
+                    android:textSize="13sp" />
+
+                <EditText
                     android:id="@+id/editTextAddress"
                     android:layout_width="238dp"
-                    android:layout_height="25dp" />
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/textViewAddress"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/border_edit_text"
+                    android:inputType="text"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
             </RelativeLayout>
+
             <RelativeLayout
-                android:layout_marginTop="21dp"
-                android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="21dp">
+
                 <TextView
                     android:id="@+id/textViewCountPeople"
-                    android:text="Количество человек"
-                    android:textSize="13sp"
-                    android:textColor="#000000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
-                <EditText
-                    android:textAlignment="center"
+                    android:text="Количество человек"
                     android:textColor="#000000"
-                    android:inputType="number"
-                    android:background="@drawable/border_edit_text"
-                    android:layout_marginTop="6dp"
-                    android:layout_below="@+id/textViewCountPeople"
+                    android:textSize="13sp" />
+
+                <EditText
                     android:id="@+id/editTextCountPeople"
                     android:layout_width="238dp"
-                    android:layout_height="25dp" />
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/textViewCountPeople"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/border_edit_text"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
             </RelativeLayout>
+
             <RadioGroup
                 android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
@@ -222,47 +233,37 @@
                     android:id="@+id/radioRightNow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/MyRadioButton"
-
                     android:layout_weight="1"
                     android:text="@string/RightNow"
-                    android:textSize="10sp"
                     android:textColor="#000000"
-                    />
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton" />
 
                 <RadioButton
-
-                    android:theme="@style/MyRadioButton"
-                    android:text="@string/OnTime"
-                    android:textSize="10sp"
-                    android:textColor="#000000"
                     android:id="@+id/radioOnTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="24dp"
-                    android:layout_weight="1" />
-
-
+                    android:layout_weight="1"
+                    android:text="@string/OnTime"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton" />
             </RadioGroup>
-            <RelativeLayout
 
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ImageButton
-                    android:layout_centerInParent="true"
                     android:id="@+id/imageButtonCreateOrder"
-                    android:src="@drawable/confirm_btn"
-                    android:background="@android:color/transparent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    />
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/confirm_btn" />
 
             </RelativeLayout>
-
         </LinearLayout>
-      
-
-
     </RelativeLayout>
-
 </android.widget.RelativeLayout>

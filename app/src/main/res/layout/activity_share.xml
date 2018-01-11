@@ -185,16 +185,16 @@
             </LinearLayout>
 
             <ScrollView
-                android:layout_below="@+id/linearAbout"
-
                 android:id="@+id/scrollViewRest"
+
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_alignParentBottom="true"
+                android:layout_below="@+id/linearAbout"
+                android:layout_marginBottom="25dp"
                 android:layout_marginLeft="13dp"
                 android:layout_marginRight="13dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginBottom="25dp"
                 android:orientation="horizontal">
 
 
@@ -217,8 +217,8 @@
                 android:id="@+id/linearURLTEST"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_alignParentBottom="true"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical">
 
                 <TextView

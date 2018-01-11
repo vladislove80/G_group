@@ -7,47 +7,45 @@
     android:background="@drawable/img_5882_1024_x_680"
     tools:context="com.oleynikov.hp.ggroup.activity.AboutUsActivity">
 
-
     <ImageView
 
-        android:layout_centerHorizontal="true"
         android:id="@+id/imageViewBigLogoAU"
         android:layout_width="170dp"
         android:layout_height="160dp"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         app:srcCompat="@drawable/g_group_logo_2" />
 
     <TextView
-        android:layout_below="@+id/imageViewBigLogoAU"
         android:id="@+id/textViewAboutPartOne"
+        style="@style/textAboutUs"
+        android:layout_below="@+id/imageViewBigLogoAU"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/about_us_part1"
-        android:textAlignment="center"
-        style="@style/textAboutUs" />
+        android:textAlignment="center" />
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewAboutPartOne"
         android:layout_above="@+id/textViewEmail"
-        >
+        android:layout_below="@+id/textViewAboutPartOne">
+
         <TextView
             android:id="@+id/textViewAboutPartTwo"
+            style="@style/textAboutUs"
             android:text="@string/about_us_part2"
-            android:textAlignment="center"
-            style="@style/textAboutUs" />
-
-
+            android:textAlignment="center" />
     </ScrollView>
 
     <TextView
-        android:layout_above="@+id/linearAboutURL"
         android:id="@+id/textViewEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_above="@+id/linearAboutURL"
         android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/e_mail"
         android:textAlignment="center"
         android:textSize="16sp"
@@ -55,11 +53,11 @@
 
     <LinearLayout
         android:id="@+id/linearAboutURL"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <ImageButton
@@ -73,7 +71,5 @@
             style="@style/imageButtonURL"
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/instagram_social_network_logo_of_photo_camera_2" />
-
     </LinearLayout>
-
 </RelativeLayout>

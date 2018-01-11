@@ -26,6 +26,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.CustomViewHo
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
         protected ImageView imageView;
+
         public CustomViewHolder(View itemView) {
             super(itemView);
             this.imageView = (ImageView) itemView.findViewById(R.id.imageViewEventAdapter);

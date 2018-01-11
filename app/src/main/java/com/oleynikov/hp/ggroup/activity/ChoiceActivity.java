@@ -10,14 +10,13 @@ import com.oleynikov.hp.ggroup.R;
 
 public class ChoiceActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String ACTION_SEND_REST_NAME = "rest_name" ;
+    public static final String ACTION_SEND_REST_NAME = "rest_name";
     public static final String UPDATE_NAME = "update_name";
 
     private ImageButton mImageButtonAlMezze;
     private ImageButton mImageButtonElevenDogs;
     private ImageButton mImageButtonKinza;
     private Intent intent = new Intent();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,6 @@ public class ChoiceActivity extends AppCompatActivity implements View.OnClickLis
         mImageButtonElevenDogs.setOnClickListener(this);
         mImageButtonKinza = (ImageButton) findViewById(R.id.imageButtonKinzaСhoice);
         mImageButtonKinza.setOnClickListener(this);
-
     }
 
     @Override
@@ -42,36 +40,24 @@ public class ChoiceActivity extends AppCompatActivity implements View.OnClickLis
                 intent.setAction(ACTION_SEND_REST_NAME);
                 sendBroadcast(intent);
                 finish();
-
-
-
                 break;
-
             case R.id.imageButtonElevenСhoice:
-
                 intent.putExtra(UPDATE_NAME, "Eleven Dogs");
                 intent.setAction(ACTION_SEND_REST_NAME);
                 sendBroadcast(intent);
                 finish();
-
                 break;
             case R.id.imageButtonKinzaСhoice:
-
-
                 intent.putExtra(UPDATE_NAME, "Kinza");
                 intent.setAction(ACTION_SEND_REST_NAME);
                 sendBroadcast(intent);
                 finish();
-
                 break;
-
         }
-
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-
     }
 }

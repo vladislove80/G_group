@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/img_5882_1024_x_680"
     android:orientation="vertical"
-    tools:context="com.oleynikov.hp.ggroup.fragment.ShareFragment">
-
+    tools:context="com.oleynikov.hp.ggroup.fragment.EventFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,7 +68,6 @@
                 android:layout_height="21dp"
                 android:layout_marginLeft="13dp"
                 android:layout_marginTop="6dp">
-
 
                 <TextView
                     android:id="@+id/textViewDateEvent"
@@ -186,9 +184,7 @@
                 android:layout_marginRight="13dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/cardview_light_background"
-                android:orientation="horizontal">
-
-            </LinearLayout>
+                android:orientation="horizontal"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -206,7 +202,6 @@
                     android:textSize="20sp"
                     android:textStyle="normal"
                     tools:text="Описание" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -226,10 +221,7 @@
                     android:textSize="14sp"
                     android:textStyle="normal"
                     tools:text="@string/TestEvent" />
-
             </LinearLayout>
-
-
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

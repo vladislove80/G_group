@@ -8,10 +8,10 @@
     tools:context="com.oleynikov.hp.ggroup.activity.SplashActivity">
 
     <ImageView
-        android:layout_gravity="center"
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_weight="1"
         app:srcCompat="@drawable/g_group_logo_2" />
 </android.widget.LinearLayout>

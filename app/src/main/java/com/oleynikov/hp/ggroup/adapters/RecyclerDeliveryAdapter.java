@@ -14,7 +14,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.bumptech.glide.Glide;
 import com.oleynikov.hp.ggroup.R;
 import com.oleynikov.hp.ggroup.model.Item;
@@ -24,7 +23,7 @@ import java.util.List;
 public class RecyclerDeliveryAdapter extends RecyclerView.Adapter<RecyclerDeliveryAdapter.MyViewHolder> {
     private List<Item> mFoodList;
     private Context context;
-    private onRecyclerViewItemClickListener mItemClickListener;
+    private OnRecyclerViewItemClickListener mItemClickListener;
     private int idRest;
 
     public RecyclerDeliveryAdapter(Context context, List<Item> mFoodList, int idRest) {
@@ -33,11 +32,11 @@ public class RecyclerDeliveryAdapter extends RecyclerView.Adapter<RecyclerDelive
         this.idRest = idRest;
     }
 
-    public void setOnItemClickListener(onRecyclerViewItemClickListener mItemClickListener) {
+    public void setOnItemClickListener(OnRecyclerViewItemClickListener mItemClickListener) {
         this.mItemClickListener = mItemClickListener;
     }
 
-    public interface onRecyclerViewItemClickListener {
+    public interface OnRecyclerViewItemClickListener {
         void onItemClickListener(View view, int position);
     }
 
@@ -61,7 +60,6 @@ public class RecyclerDeliveryAdapter extends RecyclerView.Adapter<RecyclerDelive
             mTextViewTitle = (TextView) v.findViewById(R.id.textViewNameDish);
             this.mImageButtonAddInND = (ImageButton) v.findViewById(R.id.buttonAddInND);
             mImageButtonAddInND.setOnClickListener(this);
-
         }
 
         @Override
@@ -78,14 +76,11 @@ public class RecyclerDeliveryAdapter extends RecyclerView.Adapter<RecyclerDelive
         this.mFoodList = mFoodList;
     }
 
-
     @Override
     public RecyclerDeliveryAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                                    int viewType) {
-
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_item, parent, false);
-
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }
@@ -96,33 +91,22 @@ public class RecyclerDeliveryAdapter extends RecyclerView.Adapter<RecyclerDelive
         holder.mTextViewCost.setText(mFoodList.get(position).getPrice());
         holder.mTextViewWeight.setText(mFoodList.get(position).getWeight());
         holder.mTextViewConsist.setText(mFoodList.get(position).getDescription());
-
-
-
-
-
-
-        if(mFoodList.get(position).getImages().getBig() != null) {
-           Glide
-                   .with(context)
-                   .load(mFoodList.get(position).getImages().getBig())
-                   .into(holder.mImageViewFood);
-
-       }
-       else
-           {
-               if (idRest == 121) {
-                   holder.mImageViewFood.setImageResource(R.drawable.eleven_delivery);
-               }
-               if (idRest == 120) {
-                   holder.mImageViewFood.setImageResource(R.drawable.almezze_delivery);
-               }
-               if (idRest == 119) {
-                   holder.mImageViewFood.setImageResource(R.drawable.kinza_logo);
-               }
-           }
-//
-//
+        if (mFoodList.get(position).getImages().getBig() != null) {
+            Glide
+                    .with(context)
+                    .load(mFoodList.get(position).getImages().getBig())
+                    .into(holder.mImageViewFood);
+        } else {
+            if (idRest == 121) {
+                holder.mImageViewFood.setImageResource(R.drawable.eleven_delivery);
+            }
+            if (idRest == 120) {
+                holder.mImageViewFood.setImageResource(R.drawable.almezze_delivery);
+            }
+            if (idRest == 119) {
+                holder.mImageViewFood.setImageResource(R.drawable.kinza_logo);
+            }
+        }
     }
 
     @Override

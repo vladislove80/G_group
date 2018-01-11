@@ -24,9 +24,7 @@ import com.oleynikov.hp.ggroup.REST.GorillaApi;
 import com.oleynikov.hp.ggroup.adapters.RecyclerDeliveryAdapter;
 import com.oleynikov.hp.ggroup.adapters.RecyclerNavDrawerDelivery;
 import com.oleynikov.hp.ggroup.model.FoodCategory;
-
 import com.oleynikov.hp.ggroup.model.FoodItem;
-
 import com.oleynikov.hp.ggroup.model.Item;
 
 import java.io.Serializable;
@@ -72,7 +70,7 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
     private BroadcastReceiver broadcastReceiverResrName;
     private TabLayout tabLayout;
     private RecyclerNavDrawerDelivery myRecyclerAdapter;
-    private   GorillaApi gorillaApi;
+    private GorillaApi gorillaApi;
     public static final String food = "food";
 
     private Button mButtonCreateOdrer;
@@ -88,7 +86,6 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
         initializationRetrofit();
         gorillaApi = retrofit.create(GorillaApi.class);
         addFoodList();
-
 
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -136,7 +133,7 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
         mMainRecycler.setAdapter(mDeliveryAdapter);
         mDeliveryAdapter.notifyDataSetChanged();
 
-        mDeliveryAdapter.setOnItemClickListener(new RecyclerDeliveryAdapter.onRecyclerViewItemClickListener() {
+        mDeliveryAdapter.setOnItemClickListener(new RecyclerDeliveryAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClickListener(View view, int position) {
                 switch (view.getId()) {
@@ -192,7 +189,7 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
                     }
 
                     mDeliveryAdapter = new RecyclerDeliveryAdapter(DeliveryActivity.this, test, idRestCategory);
-                    mDeliveryAdapter.setOnItemClickListener(new RecyclerDeliveryAdapter.onRecyclerViewItemClickListener() {
+                    mDeliveryAdapter.setOnItemClickListener(new RecyclerDeliveryAdapter.OnRecyclerViewItemClickListener() {
                         @Override
                         public void onItemClickListener(View view, int position) {
                             switch (view.getId()) {
@@ -247,8 +244,7 @@ public class DeliveryActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.buttonCreateOrder1:
 
-                if(!mFoodChoiceUser.isEmpty())
-                {
+                if (!mFoodChoiceUser.isEmpty()) {
                     mFoodChoiceUser.clear();
                 }
                 mFoodChoiceUser.addAll(mFoodListAlMezze);

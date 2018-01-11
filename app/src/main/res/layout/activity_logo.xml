@@ -40,7 +40,6 @@
         <EditText
             android:id="@+id/editTextNumberCard"
             style="@style/EditText"
-
             android:layout_width="match_parent"
             android:hint="@string/NumberCard"
             android:inputType="textPersonName"
@@ -75,7 +74,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-
                 android:gravity="center"
                 android:text="@string/reg" />
 
@@ -85,10 +83,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-
                 android:gravity="center"
                 android:text="@string/NewPass" />
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

@@ -1,8 +1,8 @@
 package com.oleynikov.hp.ggroup.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -27,16 +27,16 @@ public class LogoActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
-        switch( view.getId()) {
+        switch (view.getId()) {
             case R.id.imageButtonBack:
 
-              onBackPressed();
+                onBackPressed();
 
 
                 break;
 
         }
-        switch( view.getId()) {
+        switch (view.getId()) {
             case R.id.buttonViewReg:
 
                 startActivity(new Intent(this, RegistrationActivity.class));

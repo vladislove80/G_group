@@ -25,16 +25,17 @@ public class ShareActivity extends AppCompatActivity {
     private TextView mTextViewAdress;
     private TextView mTextViewURL;
     private LinearLayout mLinearLayoutMain;
-    private ArrayList<Restaurant> list ;
+    private ArrayList<Restaurant> list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
         Intent i = getIntent();
-         list = (ArrayList<Restaurant>) i
+        list = (ArrayList<Restaurant>) i
                 .getSerializableExtra(rest);
 
-        mFacebookLikeButton = (FacebookLikeButton) findViewById(R.id.facebookLikeButton) ;
+        mFacebookLikeButton = (FacebookLikeButton) findViewById(R.id.facebookLikeButton);
         mFacebookLikeButton.setPageUrl(list.get(0).getFacebookURL());
         mLinearLayoutMain = (LinearLayout) findViewById(R.id.layoutMainRest);
         mTextViewRestName = (TextView) findViewById(R.id.textViewRememberEvent);
@@ -44,7 +45,7 @@ public class ShareActivity extends AppCompatActivity {
         mTextViewAbout = (TextView) findViewById(R.id.textViewAbout);
         mTextViewAbout.setText(list.get(0).getAbout());
         mTextViewURL = (TextView) findViewById(R.id.textViewUrlRest);
-        mTextViewURL.setPaintFlags(mTextViewURL.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+        mTextViewURL.setPaintFlags(mTextViewURL.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         mTextViewURL.setText(list.get(0).getName());
         mTextViewURL.setOnClickListener(new View.OnClickListener() {
@@ -56,31 +57,24 @@ public class ShareActivity extends AppCompatActivity {
             }
         });
 
-        if(list.get(0).getName().equals(getString(R.string.AlMezze)))
-        {
+        if (list.get(0).getName().equals(getString(R.string.AlMezze))) {
             mLinearLayoutMain.setBackgroundResource(R.drawable.all_mezze_back);
         }
-        if(list.get(0).getName().equals("Eleven Dogs"))
-        {
+        if (list.get(0).getName().equals("Eleven Dogs")) {
             mLinearLayoutMain.setBackgroundResource(R.drawable.eleven_dogs_back);
         }
-        if(list.get(0).getName().equals("<<Горячие перцы>> на Королева"))
-        {
+        if (list.get(0).getName().equals("<<Горячие перцы>> на Королева")) {
             mLinearLayoutMain.setBackgroundResource(R.drawable.prci_korolrva_back);
         }
-        if(list.get(0).getName().equals("«Горячие Перцы» на Маршала Говорова"))
-        {
+        if (list.get(0).getName().equals("«Горячие Перцы» на Маршала Говорова")) {
             mLinearLayoutMain.setBackgroundResource(R.drawable.perci_govorova_back);
         }
-        if(list.get(0).getName().equals("Горячие Перцы | Черноморск"))
-        {
+        if (list.get(0).getName().equals("Горячие Перцы | Черноморск")) {
             mLinearLayoutMain.setBackgroundResource(R.drawable.prtci_chernomorsk_back);
         }
-        if(list.get(0).getName().equals("Kinza"))
-        {
+        if (list.get(0).getName().equals("Kinza")) {
             mLinearLayoutMain.setBackgroundResource(R.drawable.kinza_back);
         }
-
     }
 
     @Override

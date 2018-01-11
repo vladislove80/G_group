@@ -4,20 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
-    android:layout_marginTop="10dp"
-
-    >
-
+    android:layout_marginTop="10dp">
 
     <TextView
-        android:layout_alignParentLeft="true"
-        android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@+id/textViewX"
         android:id="@+id/textViewNameFoodDelivery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="31dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/textViewX"
         android:text="Hot-dog"
         android:textColor="#545d66"
         android:textSize="16sp" />
@@ -43,11 +40,11 @@
         app:srcCompat="@drawable/minus_btn" />
 
     <TextView
-        android:layout_marginRight="5dp"
         android:id="@+id/textViewX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
         android:layout_toLeftOf="@+id/textViewCountFood"
         android:text="x"
         android:textColor="#545d66"
@@ -74,8 +71,5 @@
         android:layout_toLeftOf="@+id/imageButtonPlus"
         android:text="100 UAH"
         android:textColor="#434a53"
-
         android:textSize="16sp" />
-
-
 </RelativeLayout>

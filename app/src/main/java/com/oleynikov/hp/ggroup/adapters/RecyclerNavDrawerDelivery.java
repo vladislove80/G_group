@@ -32,10 +32,8 @@ public class RecyclerNavDrawerDelivery extends RecyclerView.Adapter<RecyclerNavD
         ImageButton mImageButtonAdd;
         ImageButton mImageButtonRemove;
 
-
         public MyViewHolder(View v) {
             super(v);
-
             mImageButtonAdd = (ImageButton) v.findViewById(R.id.imageButtonPlus);
             mImageButtonRemove = (ImageButton) v.findViewById(R.id.imageButtonRemove);
             mTextViewFoodName = (TextView) v.findViewById(R.id.textViewNameFoodDelivery);
@@ -45,7 +43,7 @@ public class RecyclerNavDrawerDelivery extends RecyclerView.Adapter<RecyclerNavD
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public RecyclerNavDrawerDelivery(Context context , List<Item> foodLists) {
+    public RecyclerNavDrawerDelivery(Context context, List<Item> foodLists) {
         this.context = context;
         this.foodList = foodLists;
     }
@@ -53,7 +51,7 @@ public class RecyclerNavDrawerDelivery extends RecyclerView.Adapter<RecyclerNavD
     // Create new views (invoked by the layout manager)
     @Override
     public RecyclerNavDrawerDelivery.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                                   int viewType) {
+                                                                     int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_delivery, parent, false);
@@ -65,35 +63,31 @@ public class RecyclerNavDrawerDelivery extends RecyclerView.Adapter<RecyclerNavD
     @Override
     public void onBindViewHolder(final RecyclerNavDrawerDelivery.MyViewHolder holder, final int position) {
         holder.mTextViewFoodName.setText(foodList.get(position).getTitle());
-        holder.mTextViewFoodCount.setText(""+foodList.get(position).getCount());
+        holder.mTextViewFoodCount.setText("" + foodList.get(position).getCount());
         holder.mTextViewFoodCost.setText(foodList.get(position).getPrice());
         holder.mImageButtonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                foodList.get(position).setCount( foodList.get(position).getCount() + 1);
+                foodList.get(position).setCount(foodList.get(position).getCount() + 1);
 //                foodList.get(position).setPrice( foodList.get(position).getPrice() + foodList.get(position).getPrice());
 //                holder.mTextViewFoodCost.setText(foodList.get(position).getPrice());
 
-                holder.mTextViewFoodCount.setText(""+foodList.get(position).getCount());
-
+                holder.mTextViewFoodCount.setText("" + foodList.get(position).getCount());
             }
         });
         holder.mImageButtonRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (foodList.get(position).getCount()>1){
+                if (foodList.get(position).getCount() > 1) {
 
-                    foodList.get(position).setCount( foodList.get(position).getCount() - 1);
+                    foodList.get(position).setCount(foodList.get(position).getCount() - 1);
 //                    foodList.get(position).setPrice( foodList.get(position).getPrice() - foodList.get(position).getPrice());
-                    holder.mTextViewFoodCount.setText(""+foodList.get(position).getCount());
+                    holder.mTextViewFoodCount.setText("" + foodList.get(position).getCount());
+                } else {
+                    notifyDataSetChanged();
+                    foodList.remove(position);
+                    notifyDataSetChanged();
                 }
-                else
-                    {
-                        notifyDataSetChanged();
-                        foodList.remove(position);
-                        notifyDataSetChanged();
-                    }
-
             }
         });
     }
