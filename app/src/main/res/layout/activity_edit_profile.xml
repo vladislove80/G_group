@@ -72,7 +72,7 @@
                 android:id="@+id/editTextBirthDayEdit"
                 style="@style/EditTextStyle"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="numberSigned" />
 
             <TextView
                 android:id="@+id/textViewGenderEdit"
@@ -102,7 +102,7 @@
                 android:id="@+id/editTextGenderEdit"
                 style="@style/EditTextStyle"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="phone" />
 
             <TextView
                 android:id="@+id/textViewEmailEdit"
@@ -117,7 +117,7 @@
                 android:id="@+id/editTextEMailEdit"
                 style="@style/EditTextStyle"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textEmailAddress" />
         </LinearLayout>
     </ScrollView>
 
