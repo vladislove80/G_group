@@ -43,14 +43,14 @@
             android:orientation="vertical">
             <EditText
                 android:id="@+id/editTextPhoneNumber"
-                style="@style/EditTextRegist"
+                style="@style/EditTextStyle"
                 android:ems="10"
                 android:hint="@string/MobileNumber"
                 android:inputType="textPersonName"
                 android:textColorHint="@color/cardview_light_background" />
             <EditText
                 android:id="@+id/editTextFullName"
-                style="@style/EditTextRegist"
+                style="@style/EditTextStyle"
                 android:ems="10"
                 android:hint="@string/FIO"
                 android:inputType="textPersonName"
@@ -60,7 +60,7 @@
 
             <EditText
                 android:id="@+id/editTextGetCard"
-                style="@style/EditTextRegist"
+                style="@style/EditTextStyle"
                 android:ems="10"
                 android:hint="@string/GetCard"
                 android:inputType="textPersonName"
@@ -68,7 +68,7 @@
 
             <EditText
                 android:id="@+id/editTextEmail"
-                style="@style/EditTextRegist"
+                style="@style/EditTextStyle"
                 android:ems="10"
                 android:hint="EMAIL "
                 android:inputType="textPersonName"
@@ -76,7 +76,7 @@
 
             <EditText
                 android:id="@+id/editTextBirthDay"
-                style="@style/EditTextRegist"
+                style="@style/EditTextStyle"
                 android:ems="10"
                 android:hint="@string/BirthDay"
                 android:inputType="textPersonName"

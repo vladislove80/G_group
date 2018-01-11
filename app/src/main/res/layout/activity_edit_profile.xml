@@ -55,7 +55,7 @@
 
             <EditText
                 android:id="@+id/editTextFullNameEdit"
-                style="@style/EditTextRegist"
+                style="@style/EditTextStyle"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -70,7 +70,7 @@
 
             <EditText
                 android:id="@+id/editTextBirthDayEdit"
-                style="@style/EditTextRegist"
+                style="@style/EditTextStyle"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -85,7 +85,7 @@
 
             <EditText
                 android:id="@+id/editTextGetCard"
-                style="@style/EditTextRegist"
+                style="@style/EditTextStyle"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -100,7 +100,7 @@
 
             <EditText
                 android:id="@+id/editTextGenderEdit"
-                style="@style/EditTextRegist"
+                style="@style/EditTextStyle"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -115,7 +115,7 @@
 
             <EditText
                 android:id="@+id/editTextEMailEdit"
-                style="@style/EditTextRegist"
+                style="@style/EditTextStyle"
                 android:ems="10"
                 android:inputType="textPersonName" />
         </LinearLayout>
