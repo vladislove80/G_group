@@ -108,6 +108,7 @@ public class SplashActivity extends AppCompatActivity {
             unregisterReceiver(broadcastReceiverNetworkState);
             Log.d(TAG, "StopBroadcast");
         }
+        if (alertDialog != null) alertDialog.dismiss();
         finish();
     }
 
