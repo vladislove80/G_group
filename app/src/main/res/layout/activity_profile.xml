@@ -51,7 +51,7 @@
             android:layout_gravity="center"
             android:layout_weight="0.3"
             android:rotation="180"
-            app:srcCompat="@drawable/ic_keyboard_arrow_down_white_24_px" />
+            app:srcCompat="@drawable/ic_expand_more_24dp" />
 
         <ImageButton
             android:id="@+id/imageButtonHome"
