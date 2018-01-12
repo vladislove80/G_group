@@ -15,7 +15,7 @@ import com.shamanland.facebook.likebutton.FacebookLikeButton;
 
 import java.util.ArrayList;
 
-import static com.oleynikov.hp.ggroup.activity.main.view.MainActivity.rest;
+import static com.oleynikov.hp.ggroup.activity.main.MainActivity.rest;
 
 public class ShareActivity extends AppCompatActivity {
 

@@ -14,7 +14,7 @@ import android.util.Log;
 import com.oleynikov.hp.ggroup.GgroopApplication;
 import com.oleynikov.hp.ggroup.R;
 import com.oleynikov.hp.ggroup.Utils;
-import com.oleynikov.hp.ggroup.activity.main.view.MainActivity;
+import com.oleynikov.hp.ggroup.activity.main.MainActivity;
 import com.oleynikov.hp.ggroup.data.Callback;
 import com.oleynikov.hp.ggroup.data.NoDataExeption;
 import com.oleynikov.hp.ggroup.model.Info;

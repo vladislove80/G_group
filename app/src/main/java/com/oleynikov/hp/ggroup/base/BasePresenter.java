@@ -1,4 +1,4 @@
-package com.oleynikov.hp.ggroup.activity.base;
+package com.oleynikov.hp.ggroup.base;
 
 import android.support.annotation.Nullable;
 

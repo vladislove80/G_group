@@ -75,7 +75,7 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.oleynikov.hp.ggroup.activity.main.view.MainActivity"
+            android:name="com.oleynikov.hp.ggroup.activity.main.MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity

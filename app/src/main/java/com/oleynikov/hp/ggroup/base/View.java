@@ -1,4 +1,4 @@
-package com.oleynikov.hp.ggroup.activity.base;
+package com.oleynikov.hp.ggroup.base;
 
 /**
  * Created by Vladyslav on 08.01.2018

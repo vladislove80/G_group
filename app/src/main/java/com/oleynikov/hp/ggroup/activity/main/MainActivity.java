@@ -1,4 +1,4 @@
-package com.oleynikov.hp.ggroup.activity.main.view;
+package com.oleynikov.hp.ggroup.activity.main;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,7 +28,6 @@ import com.oleynikov.hp.ggroup.activity.LogoActivity;
 import com.oleynikov.hp.ggroup.activity.ShareActivity;
 import com.oleynikov.hp.ggroup.activity.ViewImageActivity;
 import com.oleynikov.hp.ggroup.activity.event.RestaurantEventsActivity;
-import com.oleynikov.hp.ggroup.activity.main.InfoListener;
 import com.oleynikov.hp.ggroup.adapters.InfoRecyclerViewAdapter;
 import com.oleynikov.hp.ggroup.data.Callback;
 import com.oleynikov.hp.ggroup.model.Info;
