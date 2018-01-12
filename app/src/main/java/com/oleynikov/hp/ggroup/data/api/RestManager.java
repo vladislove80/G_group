@@ -19,8 +19,8 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
  */
 
 public class RestManager {
-    private static final int CONNECT_TIMEOUT = 5;
-    private static final int READ_TIMEOUT = 5;
+    private static final int CONNECT_TIMEOUT = 10;
+    private static final int READ_TIMEOUT = 10;
     private final OkHttpClient.Builder httpClientBuilder;
 
     public RestManager() {

@@ -3,6 +3,7 @@ package com.oleynikov.hp.ggroup.data.repository;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.util.SparseArray;
 
 import com.oleynikov.hp.ggroup.REST.RetrofitApi;
 import com.oleynikov.hp.ggroup.Utils;
@@ -27,8 +28,9 @@ public class RepositoryImpl implements Repository {
 
     private final RetrofitApi restApi;
     private List<Info> mainListInfoImage = new ArrayList<>();
+    private SparseArray<List<String>> restaurantEventImagesURLMap = new SparseArray<>();
 
-    public RepositoryImpl(@NonNull Context context) {
+    public RepositoryImpl() {
         restApi = new RestManager().provideRetrofitApi(Utils.BASE_URL);
     }
 
@@ -53,7 +55,7 @@ public class RepositoryImpl implements Repository {
                                     .replace("[", "")
                                     .replace("]", "");
                             posts.clear();
-                            getImagesUrl(array, mainListInfoImage, callback);
+                            getImagesUrlFromInfo(array, mainListInfoImage, callback);
                             return;
                         }
                     }
@@ -72,7 +74,7 @@ public class RepositoryImpl implements Repository {
         }
     }
 
-    private void getImagesUrl(@NonNull String array, @NonNull final List<Info> mainListInfoImage, @NonNull final Callback<List<Info>> callback) {
+    private void getImagesUrlFromInfo(@NonNull String array, @NonNull final List<Info> mainListInfoImage, @NonNull final Callback<List<Info>> callback) {
         restApi.getImage(array).enqueue(new retrofit2.Callback<List<Post>>() {
 
             @Override
@@ -87,13 +89,13 @@ public class RepositoryImpl implements Repository {
                         return;
                     }
                 }
-                Log.d(TAG, "getImagesUrl -> onResponse: ");
+                Log.d(TAG, "getImagesUrlFromInfo -> onResponse: ");
                 callback.onError(new NoDataExeption());
             }
 
             @Override
             public void onFailure(@NonNull Call<List<Post>> call, @NonNull Throwable t) {
-                Log.d(TAG, "getImagesUrl -> onFailure: ");
+                Log.d(TAG, "getImagesUrlFromInfo -> onFailure: ");
                 callback.onError(t);
             }
         });
@@ -107,5 +109,70 @@ public class RepositoryImpl implements Repository {
     @Override
     public void getTransactionList() {
 
+    }
+
+    @Override
+    public void getEventListByRestaurantId(final int restaurantId, @NonNull final Callback<List<String>> callback) {
+        List<String> imageUrls = restaurantEventImagesURLMap.get(restaurantId);
+        if (imageUrls == null || imageUrls.isEmpty()) {
+            restApi.getIdEvent(restaurantId).enqueue(new retrofit2.Callback<List<Post>>() {
+                @Override
+                public void onResponse(@NonNull Call<List<Post>> call, @NonNull Response<List<Post>> response) {
+                    Log.d(TAG, "getEventListByRestaurantId -> onResponse: ");
+                    if (response.isSuccessful()) {
+                        List<Post> posts = response.body();
+                        List<String> idPost = new ArrayList<>();
+                        if (posts != null && !posts.isEmpty()) {
+                            for (int i = 0; i < posts.size(); i++) {
+                                idPost.add(posts.get(i).getFeaturedMedia());
+                            }
+                            String array = idPost
+                                    .toString()
+                                    .replace("[", "")
+                                    .replace("]", "");
+                            posts.clear();
+                            getImagesUrlFromPost(array, restaurantId, callback);
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<List<Post>> call, @NonNull Throwable t) {
+
+                }
+            });
+        } else {
+            callback.onSuccess(imageUrls);
+        }
+    }
+
+    private void getImagesUrlFromPost(@NonNull String array, @NonNull final int restaurantId, @NonNull final Callback<List<String>> callback) {
+        restApi.getImage(array).enqueue(new retrofit2.Callback<List<Post>>() {
+
+            @Override
+            public void onResponse(@NonNull Call<List<Post>> call, @NonNull Response<List<Post>> response) {
+                Log.d(TAG, "getImagesUrlFromPosts -> onResponse: ");
+                if (response.isSuccessful()) {
+                    List<Post> posts = response.body();
+                    if (posts != null && !posts.isEmpty()) {
+                        List<String> imageUrls = restaurantEventImagesURLMap.get(restaurantId);
+                        if(imageUrls == null) imageUrls = new ArrayList<>();
+                        for (int i = 0; i < posts.size(); i++) {
+                            imageUrls.add(posts.get(i).getSourceUrl());
+                        }
+                        restaurantEventImagesURLMap.put(restaurantId, imageUrls);
+                        callback.onSuccess(imageUrls);
+                        return;
+                    }
+                }
+                callback.onError(new NoDataExeption());
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<Post>> call, @NonNull Throwable t) {
+                Log.d(TAG, "getImagesUrlFromPosts -> onFailure: ");
+                callback.onError(t);
+            }
+        });
     }
 }

@@ -15,6 +15,8 @@ public interface Repository {
 
     void getInfoFromPosts(@NonNull Callback<List<Info>> callback);
 
+    void getEventListByRestaurantId(int restaurantId, @NonNull Callback<List<String>> callback);
+
     void getBalanceCard();
 
     void getTransactionList();

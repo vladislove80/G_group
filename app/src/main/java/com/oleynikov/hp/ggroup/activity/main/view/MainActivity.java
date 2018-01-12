@@ -24,10 +24,10 @@ import com.oleynikov.hp.ggroup.GgroopApplication;
 import com.oleynikov.hp.ggroup.R;
 import com.oleynikov.hp.ggroup.activity.AboutUsActivity;
 import com.oleynikov.hp.ggroup.activity.DeliveryActivity;
-import com.oleynikov.hp.ggroup.activity.EventActivity;
 import com.oleynikov.hp.ggroup.activity.LogoActivity;
 import com.oleynikov.hp.ggroup.activity.ShareActivity;
 import com.oleynikov.hp.ggroup.activity.ViewImageActivity;
+import com.oleynikov.hp.ggroup.activity.event.RestaurantEventsActivity;
 import com.oleynikov.hp.ggroup.activity.main.InfoListener;
 import com.oleynikov.hp.ggroup.adapters.InfoRecyclerViewAdapter;
 import com.oleynikov.hp.ggroup.data.Callback;
@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements InfoListener, Vie
                         startActivity(new Intent(MainActivity.this, DeliveryActivity.class));
                         break;
                     case R.id.event:
-                        startActivity(new Intent(MainActivity.this, EventActivity.class));
+                        startActivity(new Intent(MainActivity.this, RestaurantEventsActivity.class/*EventActivity.class*/));
                         break;
                     case R.id.about_us:
                         startActivity(new Intent(MainActivity.this, AboutUsActivity.class));

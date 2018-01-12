@@ -33,14 +33,8 @@ public class InfoRecyclerViewAdapter extends RecyclerView.Adapter<InfoRecyclerVi
     }
 
     @Override
-    public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, final int position) {
-        final View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.shares_layout, null);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                infoListener.onInfoItemClick(sourseURLImage.get(position).getSourceUrl());
-            }
-        });
+    public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shares_layout, null);
         return new CustomViewHolder(view);
     }
 
@@ -68,6 +62,12 @@ public class InfoRecyclerViewAdapter extends RecyclerView.Adapter<InfoRecyclerVi
         CustomViewHolder(View view) {
             super(view);
             this.imageView = (ImageView) view.findViewById(R.id.thumbnail);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    infoListener.onInfoItemClick(sourseURLImage.get(getAdapterPosition()).getSourceUrl());
+                }
+            });
         }
     }
 }

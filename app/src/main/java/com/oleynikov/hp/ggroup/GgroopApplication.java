@@ -16,7 +16,7 @@ public class GgroopApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        repository = new RepositoryImpl(this);
+        repository = new RepositoryImpl();
     }
 
     public static Repository getRepository() {
