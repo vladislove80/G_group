@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements InfoListener, Vie
     private NavigationView mNavigationView;
     private Button mButtonFavoriteClient;
     private Button mButtonDelivery;
-    private TextView mTextViewSharesTheme;
+    private TextView mTextViewInfoLabel;
     private int prevCenterPos;
 
     CircleImageView mCircleImageView;
@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements InfoListener, Vie
         GgroopApplication.getRepository().getInfoFromPosts(new Callback<List<Info>>() {
             @Override
             public void onSuccess(final List<Info> data) {
+                mTextViewInfoLabel.setText(data.get(0).getRendered());
                 myRecyclerAdapter.notifyInfoAdapter(data);
                 addScrolListener(data);
             }
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements InfoListener, Vie
     }
 
     private void initViews() {
-        mTextViewSharesTheme = (TextView) findViewById(R.id.textViewSharesTheme);
+        mTextViewInfoLabel = (TextView) findViewById(R.id.textViewInfo);
         mCircleImageView = (CircleImageView) findViewById(R.id.profile_image);
         mSharesRecyclerView = (RecyclerView) findViewById(R.id.rcyList);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -196,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements InfoListener, Vie
                 int centerPos = mSharesRecyclerView.getChildAdapterPosition(centerView);
                 if (prevCenterPos != centerPos) {
                     if (centerView != null) {
-                        mTextViewSharesTheme.setText(data.get(centerPos).getRendered());
+                        mTextViewInfoLabel.setText(data.get(centerPos).getRendered());
                     }
                     prevCenterPos = centerPos;
                 }
